@@ -1,0 +1,6 @@
+body {
+  background: none !important;
+  overflow: hidden !important;
+  user-select: none;
+  margin: 0;
+}

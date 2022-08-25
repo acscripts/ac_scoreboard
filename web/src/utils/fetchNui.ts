@@ -9,20 +9,25 @@
  * @return returnData - A promise for the data sent back by the NuiCallbacks CB argument
  */
 
-export async function fetchNui<T = any>(eventName: string, data?: any): Promise<T> {
+export async function fetchNui<T = any>(
+  eventName: string,
+  data?: any
+): Promise<T> {
   const options = {
-    method: 'post',
+    method: "post",
     headers: {
-      'Content-Type': 'application/json; charset=UTF-8',
+      "Content-Type": "application/json; charset=UTF-8",
     },
     body: JSON.stringify(data),
   };
 
-  const resourceName = (window as any).GetParentResourceName ? (window as any).GetParentResourceName() : 'nui-frame-app';
+  const resourceName = (window as any).GetParentResourceName
+    ? (window as any).GetParentResourceName()
+    : "nui-frame-app";
 
   const resp = await fetch(`https://${resourceName}/${eventName}`, options);
 
-  const respFormatted = await resp.json()
+  const respFormatted = await resp.json();
 
-  return respFormatted
+  return respFormatted;
 }

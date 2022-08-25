@@ -1,18 +1,14 @@
-import {debugData} from "./utils/debugData";
+import { debugData } from "./utils/debugData";
 
 debugData([
   {
-    action: 'setVisible',
+    action: "setVisible",
     data: true,
-  }
-])
+  },
+]);
 
 const App: React.FC = () => {
-  return (
-    <div>
-      Hello
-    </div>
-  )
-}
+  return <div>Hello</div>;
+};
 
-export default App
+export default App;

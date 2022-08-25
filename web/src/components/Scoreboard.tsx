@@ -7,9 +7,11 @@ import {
   DrawerOverlay,
   DrawerContent,
   Text,
+  Button,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNuiEvent } from "../hooks/useNuiEvent";
+import { isEnvBrowser } from "../utils/misc";
 import { debugData } from "../utils/debugData";
 
 interface Props {
@@ -41,6 +43,9 @@ const Scoreboard: React.FC = () => {
 
   return (
     <>
+      {isEnvBrowser() && (
+        <Button colorScheme='blue' onClick={onOpen}>Open</Button>
+      )}
       <Drawer isOpen={isOpen} onClose={onClose} placement="right">
         <DrawerOverlay />
         <DrawerContent>

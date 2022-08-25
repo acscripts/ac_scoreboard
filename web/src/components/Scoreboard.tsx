@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   useDisclosure,
   Drawer,
@@ -9,8 +10,9 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
+import Body from "./Body";
 import Footer from "./Footer";
-import { useState } from "react";
+import { Group } from "../interfaces/group";
 import { useNuiEvent } from "../hooks/useNuiEvent";
 import { isEnvBrowser } from "../utils/misc";
 import { debugData } from "../utils/debugData";
@@ -20,6 +22,7 @@ interface Props {
   playerCount: number;
   maxPlayers: number;
   serverId: number;
+  groups: Array<Group>;
 }
 
 const mockData: Props = {
@@ -27,6 +30,12 @@ const mockData: Props = {
   playerCount: 20,
   maxPlayers: 64,
   serverId: 6,
+  groups: [
+    { label: "Police", count: 12 },
+    { label: "EMS", count: 7 },
+    { label: "Taxi", count: 5 },
+    { label: "Mechanic", count: 0 },
+  ],
 };
 
 debugData([
@@ -56,7 +65,7 @@ const Scoreboard: React.FC = () => {
           <DrawerHeader>{data.serverName}</DrawerHeader>
 
           <DrawerBody>
-            <Text>Some content...</Text>
+            <Body groups={data.groups} />
           </DrawerBody>
 
           <DrawerFooter justifyContent="center">

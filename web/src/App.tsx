@@ -1,7 +1,11 @@
-import { Text } from "@chakra-ui/react";
+import Scoreboard from "./components/Scoreboard";
 
 const App: React.FC = () => {
-  return <Text>Hello</Text>;
+  return (
+    <>
+      <Scoreboard />
+    </>
+  );
 };
 
 export default App;

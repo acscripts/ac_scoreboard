@@ -8,12 +8,9 @@ import {
   DrawerContent,
   Button,
   Text,
-  Tag,
-  TagLeftIcon,
-  HStack,
 } from "@chakra-ui/react";
+import Footer from "./Footer";
 import { useState } from "react";
-import { FaUserAlt, FaUserFriends } from "react-icons/fa";
 import { useNuiEvent } from "../hooks/useNuiEvent";
 import { isEnvBrowser } from "../utils/misc";
 import { debugData } from "../utils/debugData";
@@ -63,18 +60,11 @@ const Scoreboard: React.FC = () => {
           </DrawerBody>
 
           <DrawerFooter justifyContent="center">
-            <HStack>
-              <Tag>
-                <TagLeftIcon as={FaUserFriends} boxSize={4} />
-                <Text>
-                  {data.playerCount} / {data.maxPlayers}
-                </Text>
-              </Tag>
-              <Tag>
-                <TagLeftIcon as={FaUserAlt} boxSize={3} />
-                <Text>{data.serverId}</Text>
-              </Tag>
-            </HStack>
+            <Footer
+              playerCount={data.playerCount}
+              maxPlayers={data.maxPlayers}
+              serverId={data.serverId}
+            />
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

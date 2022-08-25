@@ -6,12 +6,14 @@ import {
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  Text,
   Button,
-  Icon,
+  Text,
+  Tag,
+  TagLeftIcon,
+  HStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { FaUserFriends } from "react-icons/fa";
+import { FaUserAlt, FaUserFriends } from "react-icons/fa";
 import { useNuiEvent } from "../hooks/useNuiEvent";
 import { isEnvBrowser } from "../utils/misc";
 import { debugData } from "../utils/debugData";
@@ -20,12 +22,14 @@ interface Props {
   serverName: string;
   playerCount: number;
   maxPlayers: number;
+  serverId: number;
 }
 
 const mockData: Props = {
   serverName: "Server Name",
   playerCount: 20,
   maxPlayers: 64,
+  serverId: 6,
 };
 
 debugData([
@@ -59,10 +63,18 @@ const Scoreboard: React.FC = () => {
           </DrawerBody>
 
           <DrawerFooter justifyContent="center">
-            <Icon as={FaUserFriends} boxSize={5} mr={2} />
-            <Text>
-              {data.playerCount} / {data.maxPlayers}
-            </Text>
+            <HStack>
+              <Tag>
+                <TagLeftIcon as={FaUserFriends} boxSize={4} />
+                <Text>
+                  {data.playerCount} / {data.maxPlayers}
+                </Text>
+              </Tag>
+              <Tag>
+                <TagLeftIcon as={FaUserAlt} boxSize={3} />
+                <Text>{data.serverId}</Text>
+              </Tag>
+            </HStack>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

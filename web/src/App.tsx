@@ -1,14 +1,7 @@
-import { debugData } from "./utils/debugData";
-
-debugData([
-  {
-    action: "setVisible",
-    data: true,
-  },
-]);
+import { Text } from "@chakra-ui/react";
 
 const App: React.FC = () => {
-  return <div>Hello</div>;
+  return <Text>Hello</Text>;
 };
 
 export default App;

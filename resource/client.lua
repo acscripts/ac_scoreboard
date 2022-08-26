@@ -1,5 +1,5 @@
 local opened = false
-local maxPlayers = nil
+local initialDataSet = false
 
 local function handleClose()
 	SetNuiFocus(false, false)
@@ -8,8 +8,18 @@ local function handleClose()
 end
 
 local function setData()
-	if not maxPlayers then
-		maxPlayers = lib.callback.await('ac_scoreboard:getMaxPlayers', false)
+	if not initialDataSet then
+		initialDataSet = true
+		local maxPlayers = lib.callback.await('ac_scoreboard:getMaxPlayers', false)
+
+		SendNUIMessage({
+			action = 'setData',
+			data = {
+				serverName = ac.serverName,
+				maxPlayers = maxPlayers,
+				serverId = cache.serverId
+			}
+		})
 	end
 
 	local groupData = {}
@@ -28,10 +38,7 @@ local function setData()
 	SendNUIMessage({
 		action = 'setData',
 		data = {
-			serverName = ac.serverName,
 			playerCount = GetNumberOfPlayers(),
-			maxPlayers = maxPlayers,
-			serverId = GetPlayerServerId(PlayerId()),
 			groups = groupData
 		}
 	})

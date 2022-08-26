@@ -16,13 +16,18 @@ import { fetchNui } from "../utils/fetchNui";
 import { isEnvBrowser } from "../utils/misc";
 import { debugData } from "../utils/debugData";
 
-interface Props {
+interface InitialProps {
   serverName: string;
-  playerCount: number;
   maxPlayers: number;
   serverId: number;
+}
+
+interface VariableProps {
+  playerCount: number;
   groups: Array<Group>;
 }
+
+interface Props extends InitialProps, VariableProps {}
 
 const mockData: Props = {
   serverName: "Server Name",
@@ -49,7 +54,9 @@ const Scoreboard: React.FC = () => {
   const [data, setData] = useState<Props>(mockData);
 
   useNuiEvent("setVisible", setVisible);
-  useNuiEvent<Props>("setData", setData);
+  useNuiEvent<Props>("setData", (newData) => {
+    setData(data => ({ ...data, ...newData }));
+  });
 
   const closeScoreboard = () => {
     setVisible(false);

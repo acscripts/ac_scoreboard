@@ -23,14 +23,15 @@ local function setData()
 	end
 
 	local groupData = {}
-	for label, groups in pairs(ac.groups) do
+	for i=1, #ac.groupList do
+		local group = ac.groupList[i]
 		local count = 0
-		for i=1, #groups do
-			count += GlobalState[('%s:count'):format(groups[i])] or 0
+		for j=1, #group.groups do
+			count += GlobalState[('%s:count'):format(group.groups[j])] or 0
 		end
 
 		groupData[#groupData + 1] = {
-			label = label,
+			label = group.label,
 			count = count
 		}
 	end

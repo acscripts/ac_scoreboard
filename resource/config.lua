@@ -1,10 +1,22 @@
 ac = {
 	serverName = 'Very cool server',
 
-	groups = {
-		['Police'] = {'police', 'sheriff'},
-		['EMS'] = {'ambulance'},
-		['Taxi'] = {'taxi'},
-		['Mechanic'] = {'mechanic', 'lsc', 'bennys'}
+	groupList = {
+		{
+			label = 'Police',
+			groups = {'police', 'sheriff'}
+		},
+		{
+			label = 'EMS',
+			groups = {'ambulance'}
+		},
+		{
+			label = 'Taxi',
+			groups = {'taxi'}
+		},
+		{
+			label = 'Mechanic',
+			groups = {'mechanic', 'lsc', 'bennys'}
+		}
 	}
 }

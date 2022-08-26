@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
-  useDisclosure,
   Drawer,
   DrawerBody,
   DrawerFooter,
@@ -8,12 +7,12 @@ import {
   DrawerOverlay,
   DrawerContent,
   Button,
-  Text,
 } from "@chakra-ui/react";
 import Body from "./Body";
 import Footer from "./Footer";
 import { Group } from "../interfaces/group";
 import { useNuiEvent } from "../hooks/useNuiEvent";
+import { fetchNui } from "../utils/fetchNui";
 import { isEnvBrowser } from "../utils/misc";
 import { debugData } from "../utils/debugData";
 
@@ -46,20 +45,36 @@ debugData([
 ]);
 
 const Scoreboard: React.FC = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [visible, setVisible] = useState(false);
   const [data, setData] = useState<Props>(mockData);
 
-  useNuiEvent("setVisible", onOpen);
+  useNuiEvent("setVisible", setVisible);
   useNuiEvent<Props>("setData", setData);
+
+  const closeScoreboard = () => {
+    setVisible(false);
+    fetchNui("close");
+  };
+
+  useEffect(() => {
+    if (!visible) return;
+
+    const keyHandler = (e: KeyboardEvent) => {
+      if (e.code === "Escape") closeScoreboard();
+    };
+
+    window.addEventListener("keydown", keyHandler);
+    return () => window.removeEventListener("keydown", keyHandler);
+  }, [visible]);
 
   return (
     <>
       {isEnvBrowser() && (
-        <Button colorScheme="blue" onClick={onOpen}>
+        <Button colorScheme="blue" onClick={() => setVisible(true)}>
           Open
         </Button>
       )}
-      <Drawer isOpen={isOpen} onClose={onClose} placement="right">
+      <Drawer isOpen={visible} onClose={closeScoreboard} placement="right">
         <DrawerOverlay />
         <DrawerContent>
           <DrawerHeader>{data.serverName}</DrawerHeader>

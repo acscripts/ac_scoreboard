@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "start": "vite",
+    "start:game": "vite build --watch",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "format": "prettier --write \"./src/**/*.{ts,tsx,css}\""

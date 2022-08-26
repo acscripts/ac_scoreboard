@@ -1,11 +1,7 @@
 import Scoreboard from "./components/Scoreboard";
 
 const App: React.FC = () => {
-  return (
-    <>
-      <Scoreboard />
-    </>
-  );
+  return <Scoreboard />;
 };
 
 export default App;

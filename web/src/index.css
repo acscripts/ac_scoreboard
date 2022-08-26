@@ -4,3 +4,7 @@ body {
   user-select: none;
   margin: 0;
 }
+
+:root {
+  color-scheme: normal !important;
+}

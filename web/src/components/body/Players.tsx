@@ -1,5 +1,6 @@
-import { VStack, Flex, Text, Tag } from "@chakra-ui/react";
-import { Player } from "../interfaces/player";
+import { Stack, Flex, Text, Tag } from "@chakra-ui/react";
+import { Player } from "../../interfaces/player";
+import SectionHeader from "./SectionHeader";
 
 interface Props {
   players: Array<Player>;
@@ -7,7 +8,8 @@ interface Props {
 
 const Players: React.FC<Props> = (props: Props) => {
   return (
-    <VStack>
+    <Stack direction="column" spacing={1}>
+      <SectionHeader left="Name" right="ID" />
       {props.players.map((player, index) => (
         <Flex
           key={index}
@@ -20,12 +22,10 @@ const Players: React.FC<Props> = (props: Props) => {
           <Text textTransform="uppercase" fontWeight="medium">
             {player.name}
           </Text>
-          <Tag>
-            {player.id}
-          </Tag>
+          <Tag>{player.id}</Tag>
         </Flex>
       ))}
-    </VStack>
+    </Stack>
   );
 };
 

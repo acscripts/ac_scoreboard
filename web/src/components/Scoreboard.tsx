@@ -7,10 +7,10 @@ import {
   DrawerOverlay,
   DrawerContent,
   Button,
-  Divider,
+  VStack,
 } from "@chakra-ui/react";
-import Groups from "./Groups";
-import Players from "./Players";
+import Groups from "./body/Groups";
+import Players from "./body/Players";
 import Footer from "./Footer";
 import { Group } from "../interfaces/group";
 import { Player } from "../interfaces/player";
@@ -113,9 +113,10 @@ const Scoreboard: React.FC = () => {
           <DrawerHeader>{data.serverName}</DrawerHeader>
 
           <DrawerBody>
-            <Groups groups={data.groups} />
-            <Divider />
-            <Players players={data.players} />
+            <VStack spacing={6}>
+              <Groups groups={data.groups} />
+              <Players players={data.players} />
+            </VStack>
           </DrawerBody>
 
           <DrawerFooter justifyContent="center">

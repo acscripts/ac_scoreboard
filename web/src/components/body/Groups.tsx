@@ -1,5 +1,6 @@
-import { VStack, Flex, Text, Tag } from "@chakra-ui/react";
-import { Group } from "../interfaces/group";
+import { Stack, Flex, Text, Tag } from "@chakra-ui/react";
+import { Group } from "../../interfaces/group";
+import SectionHeader from "./SectionHeader";
 
 interface Props {
   groups: Array<Group>;
@@ -7,7 +8,8 @@ interface Props {
 
 const Groups: React.FC<Props> = (props: Props) => {
   return (
-    <VStack>
+    <Stack direction="column" spacing="1">
+      <SectionHeader left="Group" right="Count" />
       {props.groups.map((group, index) => (
         <Flex
           key={index}
@@ -25,7 +27,7 @@ const Groups: React.FC<Props> = (props: Props) => {
           </Tag>
         </Flex>
       ))}
-    </VStack>
+    </Stack>
   );
 };
 

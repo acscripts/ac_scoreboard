@@ -5,7 +5,7 @@ interface Props {
   groups: Array<Group>;
 }
 
-const Body: React.FC<Props> = (props: Props) => {
+const Groups: React.FC<Props> = (props: Props) => {
   return (
     <VStack>
       {props.groups.map((group, index) => (
@@ -29,4 +29,4 @@ const Body: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default Body;
+export default Groups;

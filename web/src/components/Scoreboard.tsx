@@ -8,7 +8,7 @@ import {
   DrawerContent,
   Button,
 } from "@chakra-ui/react";
-import Body from "./Body";
+import Groups from "./Groups";
 import Footer from "./Footer";
 import { Group } from "../interfaces/group";
 import { useNuiEvent } from "../hooks/useNuiEvent";
@@ -87,7 +87,7 @@ const Scoreboard: React.FC = () => {
           <DrawerHeader>{data.serverName}</DrawerHeader>
 
           <DrawerBody>
-            <Body groups={data.groups} />
+            <Groups groups={data.groups} />
           </DrawerBody>
 
           <DrawerFooter justifyContent="center">

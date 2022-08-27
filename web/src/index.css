@@ -8,3 +8,12 @@ body {
 :root {
   color-scheme: normal !important;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--chakra-colors-gray-400);
+  border-radius: 50vh;
+}

@@ -7,10 +7,13 @@ import {
   DrawerOverlay,
   DrawerContent,
   Button,
+  Divider,
 } from "@chakra-ui/react";
 import Groups from "./Groups";
+import Players from "./Players";
 import Footer from "./Footer";
 import { Group } from "../interfaces/group";
+import { Player } from "../interfaces/player";
 import { useNuiEvent } from "../hooks/useNuiEvent";
 import { fetchNui } from "../utils/fetchNui";
 import { isEnvBrowser } from "../utils/misc";
@@ -25,6 +28,7 @@ interface InitialProps {
 interface VariableProps {
   playerCount: number;
   groups: Array<Group>;
+  players: Array<Player>;
 }
 
 interface Props extends InitialProps, VariableProps {}
@@ -39,6 +43,28 @@ const mockData: Props = {
     { label: "EMS", count: 7 },
     { label: "Taxi", count: 5 },
     { label: "Mechanic", count: 0 },
+  ],
+  players: [
+    { name: "Ingrim", id: 73 },
+    { name: "Branden", id: 67 },
+    { name: "Burke", id: 18 },
+    { name: "Laney", id: 87 },
+    { name: "Marven", id: 15 },
+    { name: "Artie", id: 100 },
+    { name: "Ben", id: 32 },
+    { name: "Dewain", id: 12 },
+    { name: "Hollis", id: 71 },
+    { name: "Tommy", id: 5 },
+    { name: "Ingrim", id: 78 },
+    { name: "Raphael", id: 11 },
+    { name: "Cristobal", id: 67 },
+    { name: "Efren", id: 50 },
+    { name: "Thorstein", id: 47 },
+    { name: "Fredek", id: 15 },
+    { name: "Roley", id: 54 },
+    { name: "Perkin", id: 47 },
+    { name: "Josias", id: 63 },
+    { name: "Charley", id: 93 },
   ],
 };
 
@@ -55,7 +81,7 @@ const Scoreboard: React.FC = () => {
 
   useNuiEvent("setVisible", setVisible);
   useNuiEvent<Props>("setData", (newData) => {
-    setData(data => ({ ...data, ...newData }));
+    setData((data) => ({ ...data, ...newData }));
   });
 
   const closeScoreboard = () => {
@@ -88,6 +114,8 @@ const Scoreboard: React.FC = () => {
 
           <DrawerBody>
             <Groups groups={data.groups} />
+            <Divider />
+            <Players players={data.players} />
           </DrawerBody>
 
           <DrawerFooter justifyContent="center">

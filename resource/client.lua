@@ -63,6 +63,8 @@ RegisterCommand('scoreboard', function()
 		while opened do
 			DisablePlayerFiring(cache.playerId, true)
 			HudWeaponWheelIgnoreSelection()
+			DisableControlAction(0, 1, true)
+			DisableControlAction(0, 2, true)
 			DisableControlAction(0, 140, true)
 			DisableControlAction(0, 200, true)
 
@@ -72,7 +74,7 @@ RegisterCommand('scoreboard', function()
 
 	setData()
 
-	SetNuiFocus(true, false)
+	SetNuiFocus(true, true)
 	SetNuiFocusKeepInput(true)
 
 	SendNUIMessage({

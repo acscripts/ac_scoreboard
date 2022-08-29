@@ -1,6 +1,14 @@
 ac = {
+	-- Server name shown in the scoreboard header.
 	serverName = 'Very cool server',
 
+	-- Command name to open the scoreboard UI.
+	commandName = 'scoreboard',
+
+	-- Default keybind for the '/scoreboard' command.
+	commandKey = 'DELETE',
+
+	-- Listed groups with visible active player count.
 	groupList = {
 		{
 			label = 'Police',

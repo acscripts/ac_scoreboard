@@ -47,9 +47,9 @@ local function setData()
 	sendNuiMessage('setData', data)
 end
 
-RegisterKeyMapping('scoreboard', 'Open scoreboard', 'keyboard', 'DELETE')
+RegisterKeyMapping(ac.commandName, 'Open scoreboard', 'keyboard', ac.commandKey)
 
-RegisterCommand('scoreboard', function()
+RegisterCommand(ac.commandName, function()
 	if opened then
 		handleClose()
 		sendNuiMessage('setVisible', false)

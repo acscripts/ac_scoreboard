@@ -10,7 +10,7 @@ const PlayerList: React.FC<Props> = (props: Props) => {
   return (
     <Stack direction="column" spacing={1}>
       <SectionHeader left="Name" right="ID" />
-      {props.players.map((player, index) => (
+      {Object.values(props.players).map((player, index) => (
         <Flex
           key={index}
           w="2xs"

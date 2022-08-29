@@ -1,27 +1,20 @@
 local opened = false
 local initialDataSet = false
 
+local function sendNuiMessage(action, data)
+	SendNUIMessage({
+		action = action,
+		data = data
+	})
+end
+
 local function handleClose()
 	SetNuiFocus(false, false)
 	SetNuiFocusKeepInput(false)
 	opened = false
 end
 
-local function setData()
-	if not initialDataSet then
-		initialDataSet = true
-		local maxPlayers = lib.callback.await('ac_scoreboard:getMaxPlayers', false)
-
-		SendNUIMessage({
-			action = 'setData',
-			data = {
-				serverName = ac.serverName,
-				maxPlayers = maxPlayers,
-				serverId = cache.serverId
-			}
-		})
-	end
-
+local function getGroups()
 	local groupData = {}
 	for i=1, #ac.groupList do
 		local group = ac.groupList[i]
@@ -36,13 +29,22 @@ local function setData()
 		}
 	end
 
-	SendNUIMessage({
-		action = 'setData',
-		data = {
-			playerCount = GetNumberOfPlayers(),
-			groups = groupData
-		}
-	})
+	return groupData
+end
+
+local function setData()
+	local data = lib.callback.await('ac_scoreboard:getData', false)
+
+	if not initialDataSet then
+		initialDataSet = true
+		data.serverName = ac.serverName
+		data.serverId = cache.serverId
+	end
+
+	data.playerCount = GetNumberOfPlayers()
+	data.groups = getGroups()
+
+	sendNuiMessage('setData', data)
 end
 
 RegisterKeyMapping('scoreboard', 'Open scoreboard', 'keyboard', 'DELETE')
@@ -50,10 +52,7 @@ RegisterKeyMapping('scoreboard', 'Open scoreboard', 'keyboard', 'DELETE')
 RegisterCommand('scoreboard', function()
 	if opened then
 		handleClose()
-		SendNUIMessage({
-			action = 'setVisible',
-			data = false
-		})
+		sendNuiMessage('setVisible', false)
 		return
 	end
 
@@ -77,10 +76,7 @@ RegisterCommand('scoreboard', function()
 	SetNuiFocus(true, true)
 	SetNuiFocusKeepInput(true)
 
-	SendNUIMessage({
-		action = 'setVisible',
-		data = true
-	})
+	sendNuiMessage('setVisible', true)
 end)
 
 RegisterNUICallback('close', function(_, cb)

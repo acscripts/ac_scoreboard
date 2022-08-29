@@ -9,8 +9,8 @@ import {
   Button,
   VStack,
 } from "@chakra-ui/react";
-import Groups from "./body/Groups";
-import Players from "./body/Players";
+import GroupList from "./body/GroupList";
+import PlayerList from "./body/PlayerList";
 import Footer from "./Footer";
 import { Group } from "../interfaces/group";
 import { Player } from "../interfaces/player";
@@ -114,8 +114,8 @@ const Scoreboard: React.FC = () => {
 
           <DrawerBody>
             <VStack spacing={6}>
-              <Groups groups={data.groups} />
-              <Players players={data.players} />
+              <GroupList groups={data.groups} />
+              <PlayerList players={data.players} />
             </VStack>
           </DrawerBody>
 

@@ -1,16 +1,16 @@
 import { Stack, Flex, Text, Tag } from "@chakra-ui/react";
-import { Player } from "../../interfaces/player";
+import { Group } from "../../interfaces/group";
 import SectionHeader from "./SectionHeader";
 
 interface Props {
-  players: Array<Player>;
+  groups: Array<Group>;
 }
 
-const Players: React.FC<Props> = (props: Props) => {
+const GroupList: React.FC<Props> = (props: Props) => {
   return (
-    <Stack direction="column" spacing={1}>
-      <SectionHeader left="Name" right="ID" />
-      {props.players.map((player, index) => (
+    <Stack direction="column" spacing="1">
+      <SectionHeader left="Group" right="Count" />
+      {props.groups.map((group, index) => (
         <Flex
           key={index}
           w="2xs"
@@ -20,13 +20,15 @@ const Players: React.FC<Props> = (props: Props) => {
           borderRadius={4}
         >
           <Text noOfLines={1} casing="uppercase" fontWeight="medium">
-            {player.name}
+            {group.label}
           </Text>
-          <Tag>{player.id}</Tag>
+          <Tag colorScheme={group.count <= 0 ? "red" : "gray"}>
+            {group.count}
+          </Tag>
         </Flex>
       ))}
     </Stack>
   );
 };
 
-export default Players;
+export default GroupList;

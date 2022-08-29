@@ -2,12 +2,16 @@ local players = {}
 local maxPlayers = GetConvarInt('sv_maxclients', 32)
 local lastMaxPlayers = os.time()
 
+local function addPlayer(playerId)
+	players[playerId] = {
+		name = GetPlayerName(playerId),
+		id = playerId
+	}
+end
+
 RegisterNetEvent('ox:playerJoined', function()
 	if not players[source] then
-		players[source] = {
-			name = GetPlayerName(source),
-			id = source
-		}
+		addPlayer(source)
 	end
 end)
 
@@ -17,11 +21,7 @@ end)
 
 CreateThread(function()
 	for _, playerId in pairs(GetPlayers()) do
-		playerId = tonumber(playerId)
-		players[playerId] = {
-			name = GetPlayerName(playerId),
-			id = playerId
-		}
+		addPlayer(tonumber(playerId))
 	end
 end)
 

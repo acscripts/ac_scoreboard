@@ -21,12 +21,12 @@ import { debugData } from "../utils/debugData";
 
 interface InitialProps {
   serverName: string;
-  maxPlayers: number;
   serverId: number;
 }
 
 interface VariableProps {
   playerCount: number;
+  maxPlayers: number;
   groups: Array<Group>;
   players: Array<Player>;
 }

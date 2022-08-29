@@ -17,6 +17,7 @@ end)
 
 CreateThread(function()
 	for _, playerId in pairs(GetPlayers()) do
+		playerId = tonumber(playerId)
 		players[playerId] = {
 			name = GetPlayerName(playerId),
 			id = playerId

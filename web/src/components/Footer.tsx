@@ -1,4 +1,11 @@
-import { Text, Tag, TagLeftIcon, HStack, Tooltip } from "@chakra-ui/react";
+import {
+  Text,
+  Tag,
+  TagLeftIcon,
+  HStack,
+  Tooltip,
+  useClipboard,
+} from "@chakra-ui/react";
 import { FaUserAlt, FaUserFriends } from "react-icons/fa";
 
 interface Props {
@@ -8,9 +15,11 @@ interface Props {
 }
 
 const Footer: React.FC<Props> = (props: Props) => {
+  const { hasCopied, onCopy } = useClipboard(props.serverId.toString(), 2500);
+
   return (
     <HStack>
-      <Tooltip label="Player count">
+      <Tooltip closeOnClick={false} label="Player count">
         <Tag>
           <TagLeftIcon as={FaUserFriends} boxSize={4} />
           <Text>
@@ -18,8 +27,11 @@ const Footer: React.FC<Props> = (props: Props) => {
           </Text>
         </Tag>
       </Tooltip>
-      <Tooltip label="Your server ID">
-        <Tag>
+      <Tooltip
+        closeOnClick={false}
+        label={hasCopied ? "Copied to clipboard!" : "Your server ID"}
+      >
+        <Tag onClick={onCopy} cursor="pointer">
           <TagLeftIcon as={FaUserAlt} boxSize={3} />
           <Text>{props.serverId}</Text>
         </Tag>

@@ -48,7 +48,7 @@ const mockData: Props = {
     { name: "Ingrim", id: 73 },
     { name: "Branden", id: 67 },
     { name: "Burke", id: 18 },
-    { name: "Laney", id: 87 },
+    { name: "Bob with very long name", id: 87 },
     { name: "Marven", id: 15 },
     { name: "Artie", id: 100 },
     { name: "Ben", id: 32 },

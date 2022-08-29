@@ -19,7 +19,7 @@ const Players: React.FC<Props> = (props: Props) => {
           bg="gray.800"
           borderRadius={4}
         >
-          <Text textTransform="uppercase" fontWeight="medium">
+          <Text noOfLines={1} casing="uppercase" fontWeight="medium">
             {player.name}
           </Text>
           <Tag>{player.id}</Tag>

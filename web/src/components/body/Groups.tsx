@@ -19,7 +19,7 @@ const Groups: React.FC<Props> = (props: Props) => {
           bg="gray.800"
           borderRadius={4}
         >
-          <Text textTransform="uppercase" fontWeight="medium">
+          <Text noOfLines={1} casing="uppercase" fontWeight="medium">
             {group.label}
           </Text>
           <Tag colorScheme={group.count <= 0 ? "red" : "gray"}>

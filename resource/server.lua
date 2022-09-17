@@ -36,3 +36,5 @@ lib.callback.register('ac_scoreboard:getData', function()
 		maxPlayers = maxPlayers
 	}
 end)
+
+lib.versionCheck('antond15/ac_scoreboard')

@@ -8,4 +8,5 @@ return {
 	['ui_copied'] = "Zkopírováno do schránky!",
 
 	['command_open'] = "Otevře scoreboard",
+	['keymap_open'] = "Otevřít scoreboard",
 }

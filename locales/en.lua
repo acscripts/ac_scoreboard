@@ -8,4 +8,5 @@ return {
 	['ui_copied'] = "Copied to clipboard!",
 
 	['command_open'] = "Opens the scoreboard UI",
+	['keymap_open'] = "Open scoreboard UI",
 }

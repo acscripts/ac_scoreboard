@@ -14,7 +14,8 @@ ui_page 'web/build/index.html'
 
 files {
   'web/build/index.html',
-  'web/build/**/*'
+  'web/build/**/*',
+  'locales/*.lua'
 }
 
 shared_scripts {
@@ -22,5 +23,9 @@ shared_scripts {
   'resource/config.lua'
 }
 
-client_script 'resource/client.lua'
+client_scripts {
+  'resource/locales.lua',
+  'resource/client.lua'
+}
+
 server_script 'resource/server.lua'

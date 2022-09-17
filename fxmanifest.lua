@@ -20,7 +20,7 @@ files {
 
 shared_scripts {
   '@ox_lib/init.lua',
-  'resource/config.lua'
+  'config.lua'
 }
 
 client_scripts {

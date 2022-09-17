@@ -30,7 +30,7 @@ interface VariableProps {
   playerCount: number;
   maxPlayers: number;
   groups: Array<Group>;
-  players: Array<Player>;
+  players: Player;
 }
 
 interface Props extends InitialProps, VariableProps {}
@@ -46,28 +46,28 @@ const mockData: Props = {
     { label: "Taxi", count: 5 },
     { label: "Mechanic", count: 0 },
   ],
-  players: [
-    { name: "Ingrim", id: 73 },
-    { name: "Branden", id: 67 },
-    { name: "Burke", id: 18 },
-    { name: "Bob with very long name", id: 87 },
-    { name: "Marven", id: 15 },
-    { name: "Artie", id: 100 },
-    { name: "Ben", id: 32 },
-    { name: "Dewain", id: 12 },
-    { name: "Hollis", id: 71 },
-    { name: "Tommy", id: 5 },
-    { name: "Ingrim", id: 78 },
-    { name: "Raphael", id: 11 },
-    { name: "Cristobal", id: 67 },
-    { name: "Efren", id: 50 },
-    { name: "Thorstein", id: 47 },
-    { name: "Fredek", id: 15 },
-    { name: "Roley", id: 54 },
-    { name: "Perkin", id: 47 },
-    { name: "Josias", id: 63 },
-    { name: "Charley", id: 93 },
-  ],
+  players: {
+    "73": "Ingrim",
+    "67": "Branden",
+    "18": "Burke",
+    "87": "Bob with very long name",
+    "15": "Marven",
+    "100": "Artie",
+    "32": "Ben",
+    "12": "Dewain",
+    "71": "Hollis",
+    "5": "Tommy",
+    "78": "Ingrim",
+    "11": "Raphael",
+    "68": "Cristobal",
+    "50": "Efren",
+    "47": "Thorstein",
+    "16": "Fredek",
+    "54": "Roley",
+    "48": "Perkin",
+    "63": "Josias",
+    "93": "Charley",
+  },
   locales: {
     ui_group: "Group",
     ui_count: "Count",

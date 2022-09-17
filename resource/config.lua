@@ -1,4 +1,6 @@
 ac = {
+	locale = 'en',
+
 	-- Server name shown in the scoreboard header.
 	serverName = 'Very cool server',
 

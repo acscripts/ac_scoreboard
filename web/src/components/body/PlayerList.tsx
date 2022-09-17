@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { LocaleContext } from "../Scoreboard";
 import { Stack, Flex, Text, Tag } from "@chakra-ui/react";
 import { Player } from "../../interfaces/player";
 import SectionHeader from "./SectionHeader";
@@ -7,9 +9,11 @@ interface Props {
 }
 
 const PlayerList: React.FC<Props> = (props: Props) => {
+  const locales = useContext(LocaleContext);
+
   return (
     <Stack direction="column" spacing={1}>
-      <SectionHeader left="Name" right="ID" />
+      <SectionHeader left={locales["ui_name"]} right={locales["ui_id"]} />
       {Object.values(props.players).map((player, index) => (
         <Flex
           key={index}

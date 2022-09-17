@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import {
   Drawer,
   DrawerBody,
@@ -14,6 +14,7 @@ import PlayerList from "./body/PlayerList";
 import Footer from "./Footer";
 import { Group } from "../interfaces/group";
 import { Player } from "../interfaces/player";
+import { Locale } from "../interfaces/locale";
 import { useNuiEvent } from "../hooks/useNuiEvent";
 import { fetchNui } from "../utils/fetchNui";
 import { isEnvBrowser } from "../utils/misc";
@@ -22,6 +23,7 @@ import { debugData } from "../utils/debugData";
 interface InitialProps {
   serverName: string;
   serverId: number;
+  locales: Locale;
 }
 
 interface VariableProps {
@@ -66,6 +68,15 @@ const mockData: Props = {
     { name: "Josias", id: 63 },
     { name: "Charley", id: 93 },
   ],
+  locales: {
+    ui_group: "Group",
+    ui_count: "Count",
+    ui_name: "Name",
+    ui_id: "ID",
+    ui_player_count: "Player count",
+    ui_your_id: "Your server ID",
+    ui_copied: "Copied to clipboard!",
+  },
 };
 
 debugData([
@@ -74,6 +85,8 @@ debugData([
     data: mockData,
   },
 ]);
+
+export const LocaleContext = createContext(mockData.locales);
 
 const Scoreboard: React.FC = () => {
   const [visible, setVisible] = useState(false);
@@ -107,27 +120,29 @@ const Scoreboard: React.FC = () => {
           Open
         </Button>
       )}
-      <Drawer isOpen={visible} onClose={closeScoreboard} placement="right">
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerHeader>{data.serverName}</DrawerHeader>
+      <LocaleContext.Provider value={data.locales}>
+        <Drawer isOpen={visible} onClose={closeScoreboard} placement="right">
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerHeader>{data.serverName}</DrawerHeader>
 
-          <DrawerBody>
-            <VStack spacing={6}>
-              <GroupList groups={data.groups} />
-              <PlayerList players={data.players} />
-            </VStack>
-          </DrawerBody>
+            <DrawerBody>
+              <VStack spacing={6}>
+                <GroupList groups={data.groups} />
+                <PlayerList players={data.players} />
+              </VStack>
+            </DrawerBody>
 
-          <DrawerFooter justifyContent="center">
-            <Footer
-              playerCount={data.playerCount}
-              maxPlayers={data.maxPlayers}
-              serverId={data.serverId}
-            />
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
+            <DrawerFooter justifyContent="center">
+              <Footer
+                playerCount={data.playerCount}
+                maxPlayers={data.maxPlayers}
+                serverId={data.serverId}
+              />
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
+      </LocaleContext.Provider>
     </>
   );
 };

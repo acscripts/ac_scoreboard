@@ -32,6 +32,17 @@ local function getGroups()
 	return groupData
 end
 
+local function getUiLocales()
+	local uiLocales = {}
+	for k,v in pairs(locales) do
+		if k:find('ui_') then
+			uiLocales[k] = v
+		end
+	end
+
+	return uiLocales
+end
+
 local function setData()
 	local data = lib.callback.await('ac_scoreboard:getData', false)
 
@@ -39,6 +50,7 @@ local function setData()
 		initialDataSet = true
 		data.serverName = ac.serverName
 		data.serverId = cache.serverId
+		data.locales = getUiLocales()
 	end
 
 	data.playerCount = GetNumberOfPlayers()

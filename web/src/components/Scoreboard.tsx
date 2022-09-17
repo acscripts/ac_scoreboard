@@ -121,7 +121,12 @@ const Scoreboard: React.FC = () => {
         </Button>
       )}
       <LocaleContext.Provider value={data.locales}>
-        <Drawer isOpen={visible} onClose={closeScoreboard} placement="right">
+        <Drawer
+          isOpen={visible}
+          onClose={closeScoreboard}
+          placement="right"
+          blockScrollOnMount={false}
+        >
           <DrawerOverlay />
           <DrawerContent>
             <DrawerHeader>{data.serverName}</DrawerHeader>

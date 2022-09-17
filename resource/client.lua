@@ -61,6 +61,7 @@ end
 
 RegisterKeyMapping(ac.commandName, 'Open scoreboard', 'keyboard', ac.commandKey)
 
+TriggerEvent('chat:addSuggestion', ('/%s'):format(ac.commandName), locale('command_open'))
 RegisterCommand(ac.commandName, function()
 	if opened then
 		handleClose()

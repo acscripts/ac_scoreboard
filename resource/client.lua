@@ -59,7 +59,9 @@ local function setData()
 	sendNuiMessage('setData', data)
 end
 
-RegisterKeyMapping(ac.commandName, locale('keymap_open'), 'keyboard', ac.commandKey)
+if ac.commandKey then
+	RegisterKeyMapping(ac.commandName, locale('keymap_open'), 'keyboard', ac.commandKey)
+end
 
 TriggerEvent('chat:addSuggestion', ('/%s'):format(ac.commandName), locale('command_open'))
 RegisterCommand(ac.commandName, function()

@@ -1,4 +1,9 @@
+---------------------------------------------------------------------------------------------
+-- More detailed description of each config option can be found in 'docs/config.md' file.
+---------------------------------------------------------------------------------------------
+
 ac = {
+	-- Language for the UI
 	locale = 'en',
 
 	-- Whether to check for newer resource version and notify in server console.
@@ -13,7 +18,7 @@ ac = {
 	-- Default keybind for the '/scoreboard' command.
 	commandKey = 'DELETE',
 
-	-- Listed groups with visible active player count.
+	-- Group list shown in the scoreboard.
 	groupList = {
 		{
 			label = 'Police',

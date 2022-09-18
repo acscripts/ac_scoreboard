@@ -1,6 +1,9 @@
 ac = {
 	locale = 'en',
 
+	-- Whether to check for newer resource version and notify in server console.
+	versionCheck = true,
+
 	-- Server name shown in the scoreboard header.
 	serverName = 'AC Scoreboard',
 

@@ -37,4 +37,6 @@ lib.callback.register('ac_scoreboard:getData', function()
 	}
 end)
 
-lib.versionCheck('antond15/ac_scoreboard')
+if ac.versionCheck then
+	lib.versionCheck('antond15/ac_scoreboard')
+end

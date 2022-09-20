@@ -49,6 +49,8 @@ local function setData()
 	if not initialDataSet then
 		initialDataSet = true
 		data.serverName = ac.serverName
+		data.visibleParts = ac.visibleParts
+		data.drawerSide = ac.drawerSide
 		data.serverId = cache.serverId
 		data.locales = getUiLocales()
 	end

@@ -9,6 +9,8 @@ In this file you can find more detailed description of each config option.
 - [serverName](#servername)
 - [commandName](#commandname)
 - [commandKey](#commandkey)
+- [visibleParts](#visibleparts)
+- [drawerSide](#drawerside)
 - [groupList](#grouplist)
 </details>
 
@@ -56,6 +58,25 @@ Default keybind for the scoreboard command.
 `false` = The keybind will not be created at all.  
 `''` = Empty quotes for creating the keybind, but not setting a default key.   
 `'DELETE'` = Or any other [valid key](https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard) to create a keybind with **this** default key.
+
+
+
+## visibleParts
+Which parts of the scoreboard should be visible.
+
+**Accepted values**  
+`'both'` = Both groups and players will be visible.  
+`'groups'` = Only groups will be visible.  
+`'players'` = Only players will be visible.
+
+
+
+## drawerSide
+On which side of the screen the scoreboard should be.
+
+**Accepted values**  
+`'left'` = Left.  
+`'right'` = Right.
 
 
 

@@ -18,6 +18,12 @@ ac = {
 	-- Default keybind for the '/scoreboard' command.
 	commandKey = 'DELETE',
 
+	-- Which parts of the scoreboard should be visible (both, groups, players).
+	visibleParts = 'both',
+
+	-- On which side of the screen the scoreboard should be (left, right).
+	drawerSide = 'right',
+
 	-- Group list shown in the scoreboard.
 	groupList = {
 		{

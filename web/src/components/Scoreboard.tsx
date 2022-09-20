@@ -22,6 +22,8 @@ import { debugData } from "../utils/debugData";
 
 interface InitialProps {
   serverName: string;
+  visibleParts: "both" | "groups" | "players";
+  drawerSide: "left" | "right";
   serverId: number;
   locales: Locale;
 }
@@ -37,6 +39,8 @@ interface Props extends InitialProps, VariableProps {}
 
 const mockData: Props = {
   serverName: "Server Name",
+  visibleParts: "both",
+  drawerSide: "right",
   playerCount: 20,
   maxPlayers: 64,
   serverId: 6,
@@ -124,7 +128,7 @@ const Scoreboard: React.FC = () => {
         <Drawer
           isOpen={visible}
           onClose={closeScoreboard}
-          placement="right"
+          placement={data.drawerSide}
           blockScrollOnMount={false}
         >
           <DrawerOverlay />
@@ -133,8 +137,14 @@ const Scoreboard: React.FC = () => {
 
             <DrawerBody>
               <VStack spacing={6}>
-                <GroupList groups={data.groups} />
-                <PlayerList players={data.players} />
+                {(data.visibleParts === "both" ||
+                  data.visibleParts === "groups") && (
+                  <GroupList groups={data.groups} />
+                )}
+                {(data.visibleParts === "both" ||
+                  data.visibleParts === "players") && (
+                  <PlayerList players={data.players} />
+                )}
               </VStack>
             </DrawerBody>
 

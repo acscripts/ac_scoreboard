@@ -9,7 +9,9 @@ local function addPlayer(playerId)
 	end
 end
 
-RegisterNetEvent('ac_scoreboard:playerJoined', addPlayer)
+RegisterNetEvent('ac_scoreboard:playerJoined', function()
+	addPlayer(source)
+end)
 
 AddEventHandler('playerDropped', function()
 	players[tostring(source)] = nil

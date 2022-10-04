@@ -9,9 +9,7 @@ local function addPlayer(playerId)
 	end
 end
 
-RegisterNetEvent('ox:playerJoined', function()
-	addPlayer(source)
-end)
+RegisterNetEvent('ac_scoreboard:playerJoined', addPlayer)
 
 AddEventHandler('playerDropped', function()
 	players[tostring(source)] = nil

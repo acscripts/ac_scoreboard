@@ -8,7 +8,7 @@ version '1.0.0'
 description 'WIP scoreboard for ox_core'
 repository 'https://github.com/antond15/ac_scoreboard'
 
-dependency 'ox_core'
+dependency 'ox_lib'
 
 ui_page 'web/build/index.html'
 
@@ -28,4 +28,7 @@ client_scripts {
   'resource/client.lua'
 }
 
-server_script 'resource/server.lua'
+server_scripts {
+  'resource/server/server.lua',
+  'resource/server/framework.lua'
+}

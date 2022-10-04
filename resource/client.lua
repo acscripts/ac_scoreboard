@@ -1,6 +1,10 @@
 local opened = false
 local initialDataSet = false
 
+SetTimeout(500, function()
+	TriggerServerEvent('ac_scoreboard:playerJoined')
+end)
+
 local function sendNuiMessage(action, data)
 	SendNUIMessage({
 		action = action,
@@ -94,7 +98,7 @@ RegisterCommand(ac.commandName, function()
 	SetNuiFocusKeepInput(true)
 
 	sendNuiMessage('setVisible', true)
-end)
+end, false)
 
 RegisterNUICallback('close', function(_, cb)
 	cb(1)

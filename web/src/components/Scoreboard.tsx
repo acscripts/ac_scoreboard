@@ -31,8 +31,8 @@ interface InitialProps {
 interface VariableProps {
   playerCount: number;
   maxPlayers: number;
-  groups: Array<Group>;
-  players: Player;
+  groups?: Array<Group>;
+  players?: Player;
 }
 
 interface Props extends InitialProps, VariableProps {}
@@ -137,14 +137,17 @@ const Scoreboard: React.FC = () => {
 
             <DrawerBody>
               <VStack spacing={6}>
-                {(data.visibleParts === "both" ||
-                  data.visibleParts === "groups") && (
-                  <GroupList groups={data.groups} />
-                )}
-                {(data.visibleParts === "both" ||
-                  data.visibleParts === "players") && (
-                  <PlayerList players={data.players} />
-                )}
+                {data.groups &&
+                  (data.visibleParts === "both" ||
+                    data.visibleParts === "groups") && (
+                    <GroupList groups={data.groups} />
+                  )}
+
+                {data.players &&
+                  (data.visibleParts === "both" ||
+                    data.visibleParts === "players") && (
+                    <PlayerList players={data.players} />
+                  )}
               </VStack>
             </DrawerBody>
 

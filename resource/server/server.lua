@@ -23,7 +23,7 @@ CreateThread(function()
 	end
 end)
 
-lib.callback.register('ac_scoreboard:getData', function()
+RegisterNetEvent('ac_scoreboard:requestData', function()
 	-- Convar change handlers are "not really important or worth the risk of badly designing stuff",
 	-- so we update 'maxPlayers' every 5 minutes if called, like a dicks.
 	if os.time() - lastMaxPlayers > 300 then
@@ -31,12 +31,8 @@ lib.callback.register('ac_scoreboard:getData', function()
 		lastMaxPlayers = os.time()
 	end
 
-	return {
+	TriggerClientEvent('ac_scoreboard:receiveData', source, {
 		players = players,
 		maxPlayers = maxPlayers
-	}
+	})
 end)
-
-if ac.versionCheck then
-	lib.versionCheck('antond15/ac_scoreboard')
-end

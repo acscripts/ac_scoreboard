@@ -1,8 +1,16 @@
 local opened = false
-local initialDataSet = false
+local playerId = PlayerId()
 
 SetTimeout(500, function()
 	TriggerServerEvent('ac_scoreboard:playerJoined')
+end)
+
+local dataPromise = nil
+RegisterNetEvent('ac_scoreboard:receiveData', function(data)
+	if dataPromise then
+		dataPromise:resolve(data)
+		dataPromise = nil
+	end
 end)
 
 ---@param action string
@@ -49,15 +57,18 @@ local function getUiLocales()
 	return uiLocales
 end
 
+local initialDataSet = false
 local function setData()
-	local data = lib.callback.await('ac_scoreboard:getData', false)
+	dataPromise = promise.new()
+	TriggerServerEvent('ac_scoreboard:requestData')
+	local data = Citizen.Await(dataPromise)
 
 	if not initialDataSet then
 		initialDataSet = true
 		data.serverName = ac.serverName
 		data.visibleParts = ac.visibleParts
 		data.drawerSide = ac.drawerSide
-		data.serverId = cache.serverId
+		data.serverId = GetPlayerServerId(playerId)
 		data.locales = getUiLocales()
 	end
 
@@ -83,7 +94,7 @@ RegisterCommand(ac.commandName, function()
 
 	CreateThread(function()
 		while opened do
-			DisablePlayerFiring(cache.playerId, true)
+			DisablePlayerFiring(playerId, true)
 			HudWeaponWheelIgnoreSelection()
 			DisableControlAction(0, 1, true)
 			DisableControlAction(0, 2, true)

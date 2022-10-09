@@ -1,5 +1,7 @@
+---@param name string
+---@return boolean
 local function hasResource(name)
-	return GetResourceState(name):find('start')
+	return GetResourceState(name):find('start') ~= nil
 end
 
 local core = (hasResource('es_extended') and 'esx') or (hasResource('qb-core') and 'qb') or (hasResource('ox_core') and 'ox') or ''

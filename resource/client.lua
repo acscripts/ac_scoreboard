@@ -5,6 +5,8 @@ SetTimeout(500, function()
 	TriggerServerEvent('ac_scoreboard:playerJoined')
 end)
 
+---@param action string
+---@param data table | boolean
 local function sendNuiMessage(action, data)
 	SendNUIMessage({
 		action = action,

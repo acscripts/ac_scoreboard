@@ -2,15 +2,15 @@ local players = {}
 local maxPlayers = GetConvarInt('sv_maxclients', 32)
 local lastMaxPlayers = os.time()
 
+---@param playerId string
 local function addPlayer(playerId)
-	playerId = tostring(playerId)
 	if not players[playerId] then
 		players[playerId] = GetPlayerName(playerId)
 	end
 end
 
 RegisterNetEvent('ac_scoreboard:playerJoined', function()
-	addPlayer(source)
+	addPlayer(tostring(source))
 end)
 
 AddEventHandler('playerDropped', function()

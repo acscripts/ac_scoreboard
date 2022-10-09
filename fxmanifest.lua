@@ -5,7 +5,7 @@ lua54 'yes'
 name 'ac_scoreboard'
 author 'ANTOND.#8507'
 version '1.0.0'
-description 'WIP scoreboard for ox_core'
+description 'A framework-standalone scoreboard UI for FiveM.'
 repository 'https://github.com/antond15/ac_scoreboard'
 
 dependency 'ox_lib'

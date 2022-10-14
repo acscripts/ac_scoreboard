@@ -5,7 +5,7 @@ local function hasResource(name)
 end
 
 local core = (hasResource('es_extended') and 'esx') or (hasResource('qb-core') and 'qb') or (hasResource('ox_core') and 'ox') or ''
-if core ~= 'esx' or core ~= 'qb' then return end
+if core ~= 'esx' and core ~= 'qb' then return end
 
 
 local count = {}
@@ -33,26 +33,26 @@ local jobs = {
 	loaded = function(self, data)
 		local jobData = {
 			name = data.name,
-			onDuty = data.onDuty or false,
+			onDuty = data.onDuty == nil or data.onDuty,
 		}
 
 		players[data.source] = jobData
 
-		if data.onDuty then self.add(data.name) end
+		if jobData.onDuty then self.add(data.name) end
 	end,
 
 	---@param data JobData
 	update = function(self, data)
 		local jobData = {
 			name = data.name,
-			onDuty = data.onDuty or false,
+			onDuty = data.onDuty == nil or data.onDuty,
 		}
 
 		local lastJob = players[data.source]
 		players[data.source] = jobData
 
 		if data.name ~= lastJob.name then
-			if data.onDuty then self.add(data.name) end
+			if jobData.onDuty then self.add(data.name) end
 			if lastJob.onDuty then self.remove(lastJob.name) end
 		end
 	end

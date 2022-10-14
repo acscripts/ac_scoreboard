@@ -32,7 +32,8 @@ ac = {
 		},
 		{
 			label = 'EMS',
-			groups = {'ambulance'}
+			groups = {'ambulance'},
+			separator = true
 		},
 		{
 			label = 'Taxi',

@@ -13,8 +13,8 @@ import GroupList from "./body/GroupList";
 import PlayerList from "./body/PlayerList";
 import Footer from "./Footer";
 import { Group } from "../interfaces/group";
-import { Player } from "../interfaces/player";
-import { Locale } from "../interfaces/locale";
+import type { Player } from "../interfaces/player";
+import type { Locale } from "../interfaces/locale";
 import { useNuiEvent } from "../hooks/useNuiEvent";
 import { fetchNui } from "../utils/fetchNui";
 import { isEnvBrowser } from "../utils/misc";
@@ -46,7 +46,7 @@ const mockData: Props = {
   serverId: 6,
   groups: [
     { label: "Police", count: 12 },
-    { label: "EMS", count: 7 },
+    { label: "EMS", count: 7, separator: true },
     { label: "Taxi", count: 5 },
     { label: "Mechanic", count: 0 },
   ],

@@ -39,7 +39,8 @@ local function getGroups()
 
 		groupData[#groupData + 1] = {
 			label = group.label,
-			count = count
+			count = count,
+			separator = group.separator or nil
 		}
 	end
 

@@ -88,7 +88,8 @@ Order in the UI is the same as in the config!
 ```lua
 {
     label = 'Label for the groups below',
-    groups = {'any valid', 'groups'}
+    groups = {'any valid', 'groups'},
+    separator = true -- optional, will add a separator line under this group
 }
 ```
 

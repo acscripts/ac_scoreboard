@@ -73,7 +73,6 @@ local function setData()
 		data.locales = getUiLocales()
 	end
 
-	data.playerCount = GetNumberOfPlayers()
 	data.groups = getGroups()
 
 	sendNuiMessage('setData', data)

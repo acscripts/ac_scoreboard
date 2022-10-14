@@ -5,122 +5,122 @@ local function hasResource(name)
 end
 
 local core = (hasResource('es_extended') and 'esx') or (hasResource('qb-core') and 'qb') or (hasResource('ox_core') and 'ox') or ''
+if core ~= 'esx' or core ~= 'qb' then return end
+
+
+local count = {}
+local players = {}
+
+---@class JobData
+---@field name string Job name
+---@field onDuty boolean?
+---@field source number
+
+local jobs = {
+	---@param job string Job name
+	add = function(job)
+		count[job] = (count[job] or 0) + 1
+		GlobalState[('%s:count'):format(job)] = count[job]
+	end,
+
+	---@param job string Job name
+	remove = function(job)
+		count[job] = (count[job] or 1) - 1
+		GlobalState[('%s:count'):format(job)] = count[job]
+	end,
+
+	---@param data JobData
+	loaded = function(self, data)
+		local jobData = {
+			name = data.name,
+			onDuty = data.onDuty or false,
+		}
+
+		players[data.source] = jobData
+
+		if data.onDuty then self.add(data.name) end
+	end,
+
+	---@param data JobData
+	update = function(self, data)
+		local jobData = {
+			name = data.name,
+			onDuty = data.onDuty or false,
+		}
+
+		local lastJob = players[data.source]
+		players[data.source] = jobData
+
+		if data.name ~= lastJob.name then
+			if data.onDuty then self.add(data.name) end
+			if lastJob.onDuty then self.remove(lastJob.name) end
+		end
+	end
+}
+
+AddEventHandler('playerDropped', function()
+	local lastJob = players[source]
+	players[source] = nil
+
+	if lastJob.onDuty then jobs.remove(lastJob.name) end
+end)
+
 
 if core == 'esx' then
 	-- Credits to Linden (https://gist.github.com/thelindat/93311a4fd6ea6c1d4427438a533e228c)
 	local ESX = exports.es_extended:getSharedObject()
-	local jobCount = {}
 
-	-- setters
-	local function addJob(job)
-		jobCount[job] = (jobCount[job] or 0) + 1
-		GlobalState[('%s:count'):format(job)] = jobCount[job]
+	for _, player in pairs(ESX.GetExtendedPlayers()) do
+		jobs:loaded({
+			name = player.job.name,
+			onDuty = player.job.onDuty,
+			source = player.source
+		})
 	end
 
-	local function removeJob(job)
-		jobCount[job] = (jobCount[job] or 1) - 1
-		GlobalState[('%s:count'):format(job)] = jobCount[job]
-	end
-
-	-- add
-	local function playerLoaded(_, xPlayer)
-		local data = {
-			name = xPlayer.job.name,
-			onDuty = xPlayer.job.onDuty == nil or xPlayer.job.onDuty,
-		}
-
-		ESX.Players[xPlayer.source] = data
-
-		if data.onDuty then addJob(data.name) end
-	end
-
-	for i = 1, #ESX.Players do
-		playerLoaded(_, ESX.Players[i])
-	end
-
-	AddEventHandler('esx:playerLoaded', playerLoaded)
-
-	-- remove
-	AddEventHandler('esx:playerDropped', function(playerId)
-		local lastJob = ESX.Players[playerId]
-		ESX.Players[playerId] = nil
-
-		if lastJob.onDuty then removeJob(lastJob.name) end
+	AddEventHandler('esx:playerLoaded', function(_, player)
+		jobs:loaded({
+			name = player.job.name,
+			onDuty = player.job.onDuty,
+			source = player.source
+		})
 	end)
 
-	-- set
 	AddEventHandler('esx:setJob', function(playerId, job)
-		local data = {
+		jobs:update({
 			name = job.name,
-			onDuty = job.onDuty == nil or job.onDuty,
-		}
-
-		local lastJob = ESX.Players[playerId]
-		ESX.Players[playerId] = data
-
-		if job.name ~= lastJob.name then
-			if data.onDuty then addJob(data.name) end
-			if lastJob.onDuty then removeJob(lastJob.name) end
-		end
+			onDuty = job.onDuty,
+			source = playerId
+		})
 	end)
 
 elseif core == 'qb' then
 	local QB = exports['qb-core']:GetCoreObject()
-	local players = {}
-	local jobCount = {}
-
-	-- setters
-	local function addJob(job)
-		jobCount[job] = (jobCount[job] or 0) + 1
-		GlobalState[('%s:count'):format(job)] = jobCount[job]
-	end
-
-	local function removeJob(job)
-		jobCount[job] = (jobCount[job] or 1) - 1
-		GlobalState[('%s:count'):format(job)] = jobCount[job]
-	end
-
-	-- add
-	local function playerLoaded(player)
-		player = player.PlayerData
-		local data = {
-			name = player.job.name,
-			onduty = player.job.onduty == nil or player.job.onduty,
-		}
-
-		players[player.source] = data
-
-		if data.onduty then addJob(data.name) end
-	end
 
 	for _, player in pairs(QB.Functions.GetQBPlayers()) do
-		playerLoaded(player)
+		player = player.PlayerData
+		jobs:loaded({
+			name = player.job.name,
+			onDuty = player.job.onduty,
+			source = player.source
+		})
 	end
 
-	AddEventHandler('QBCore:Server:PlayerLoaded', playerLoaded)
-
-	-- remove
-	AddEventHandler('playerDropped', function()
-		local lastJob = players[source]
-		players[source] = nil
-
-		if lastJob.onduty then removeJob(lastJob.name) end
+	AddEventHandler('QBCore:Server:PlayerLoaded', function(player)
+		player = player.PlayerData
+		jobs:loaded({
+			name = player.job.name,
+			onDuty = player.job.onduty,
+			source = player.source
+		})
 	end)
 
-	-- set
 	AddEventHandler('QBCore:Server:OnJobUpdate', function(playerId, job)
-		local data = {
+		jobs:update({
 			name = job.name,
-			onduty = job.onduty == nil or job.onduty,
-		}
-
-		local lastJob = players[playerId]
-		players[playerId] = data
-
-		if job.name ~= lastJob.name then
-			if data.onduty then addJob(data.name) end
-			if lastJob.onduty then removeJob(lastJob.name) end
-		end
+			onDuty = job.onduty,
+			source = playerId
+		})
 	end)
 
 end

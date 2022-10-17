@@ -31,30 +31,30 @@ local jobs = {
 
 	---@param data JobData
 	loaded = function(self, data)
-		local jobData = {
+		local onDuty = data.onDuty == nil or data.onDuty
+
+		players[data.source] = {
 			name = data.name,
-			onDuty = data.onDuty == nil or data.onDuty,
+			onDuty = onDuty,
 		}
 
-		players[data.source] = jobData
-
-		if jobData.onDuty then self.add(data.name) end
+		if onDuty then self.add(data.name) end
 	end,
 
 	---@param data JobData
 	update = function(self, data)
-		local jobData = {
+		local lastJob = players[data.source]
+		local onDuty = data.onDuty == nil or data.onDuty
+
+		if data.name == lastJob.name and onDuty == lastJob.onDuty then return end
+
+		players[data.source] = {
 			name = data.name,
-			onDuty = data.onDuty == nil or data.onDuty,
+			onDuty = onDuty,
 		}
 
-		local lastJob = players[data.source]
-		players[data.source] = jobData
-
-		if data.name ~= lastJob.name or jobData.onDuty ~= lastJob.onDuty then
-			if jobData.onDuty then self.add(data.name) end
-			if lastJob.onDuty then self.remove(lastJob.name) end
-		end
+		if onDuty then self.add(data.name) end
+		if lastJob.onDuty then self.remove(lastJob.name) end
 	end
 }
 

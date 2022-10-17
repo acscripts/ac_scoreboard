@@ -51,7 +51,7 @@ local jobs = {
 		local lastJob = players[data.source]
 		players[data.source] = jobData
 
-		if data.name ~= lastJob.name then
+		if data.name ~= lastJob.name or jobData.onDuty ~= lastJob.onDuty then
 			if jobData.onDuty then self.add(data.name) end
 			if lastJob.onDuty then self.remove(lastJob.name) end
 		end
@@ -115,11 +115,11 @@ elseif core == 'qb' then
 		})
 	end)
 
-	AddEventHandler('QBCore:Server:OnJobUpdate', function(playerId, job)
+	AddEventHandler('QBCore:Player:SetPlayerData', function(player)
 		jobs:update({
-			name = job.name,
-			onDuty = job.onduty,
-			source = playerId
+			name = player.job.name,
+			onDuty = player.job.onduty,
+			source = player.source
 		})
 	end)
 

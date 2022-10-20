@@ -1,5 +1,4 @@
 local players = {}
-local playerCount = 0
 local maxPlayers = GetConvarInt('sv_maxclients', 32)
 local lastMaxPlayers = os.time()
 
@@ -7,17 +6,15 @@ local lastMaxPlayers = os.time()
 local function addPlayer(playerId)
 	if not players[playerId] then
 		players[playerId] = GetPlayerName(playerId)
-		playerCount += 1
 	end
 end
 
-RegisterNetEvent('ac_scoreboard:playerJoined', function()
+AddEventHandler('playerJoining', function()
 	addPlayer(tostring(source))
 end)
 
 AddEventHandler('playerDropped', function()
 	players[tostring(source)] = nil
-	playerCount -= 1
 end)
 
 CreateThread(function()
@@ -36,7 +33,7 @@ RegisterNetEvent('ac_scoreboard:requestData', function()
 
 	TriggerClientEvent('ac_scoreboard:receiveData', source, {
 		players = players,
-		playerCount = playerCount,
+		playerCount = GetNumPlayerIndices(),
 		maxPlayers = maxPlayers
 	})
 end)

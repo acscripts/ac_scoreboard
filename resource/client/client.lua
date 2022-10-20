@@ -1,10 +1,6 @@
 local opened = false
 local playerId = PlayerId()
 
-SetTimeout(500, function()
-	TriggerServerEvent('ac_scoreboard:playerJoined')
-end)
-
 local dataPromise = nil
 RegisterNetEvent('ac_scoreboard:receiveData', function(data)
 	if dataPromise then

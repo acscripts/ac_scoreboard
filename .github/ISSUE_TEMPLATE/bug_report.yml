@@ -8,14 +8,28 @@ assignees:
 body:
   - type: markdown
     attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report!
+      value: Thanks for taking the time to fill out this bug report!
 
   - type: input
     id: version
     attributes:
       label: Version
-      description: What release version was this issue encountered on?
+      description: |
+        What release version was this issue encountered on?
+        Use the version number, not `latest` or similar useless stuff.
+      placeholder: v1.0.2
+    validations:
+      required: true
+
+  - type: dropdown
+    id: framework
+    attributes:
+      label: Framework
+      description: What framework are you getting this error on?
+      options:
+        - ox_core
+        - es_extended
+        - qb-core
     validations:
       required: true
 
@@ -23,7 +37,9 @@ body:
     id: description
     attributes:
       label: Issue description
-      description: A clear and concise description of what the issue is.
+      description: |
+        A clear and concise description of what the issue is.
+        If you want to paste errors or code, use code blocks.
     validations:
       required: true
 
@@ -31,7 +47,7 @@ body:
     id: reproduction
     attributes:
       label: Steps to reproduce
-      description: Steps to reproduce the issue.
+      description: "**DETAILED** steps to reproduce the issue."
       placeholder: |
         1. In this environment...
         2. With this config...

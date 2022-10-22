@@ -4,7 +4,7 @@ lua54 'yes'
 
 name 'ac_scoreboard'
 author 'ANTOND.#8507'
-version '1.0.2'
+version '1.0.3'
 description 'A framework-standalone scoreboard UI for FiveM.'
 repository 'https://github.com/antond15/ac_scoreboard'
 

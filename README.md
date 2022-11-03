@@ -21,6 +21,6 @@ Report bugs using [GitHub issues](https://github.com/antond15/ac_scoreboard/issu
 Possible solutions can be found [here](./docs/common_issues.md).
 
 ### Preview
-https://streamable.com/sfqph7
+https://youtu.be/M7YQ5vicwKo
 
 <img src='https://raw.githubusercontent.com/antond15/antond15/main/assets/scoreboard_preview.png' alt='scoreboard preview' height='500' />

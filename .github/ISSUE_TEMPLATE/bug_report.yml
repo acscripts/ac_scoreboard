@@ -30,6 +30,7 @@ body:
         - ox_core
         - es_extended
         - qb-core
+      multiple: true
     validations:
       required: true
 
@@ -57,3 +58,13 @@ body:
         6. See error...
     validations:
       required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: "Confirm the following statements:"
+      options:
+        - label: "This issue is not a question or a feature request."
+          required: true
+        - label: "I have provided a **detailed** issue description and **detailed** reproduction steps."
+          required: true

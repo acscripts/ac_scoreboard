@@ -44,8 +44,9 @@ local jobs = {
 	---@param data JobData
 	update = function(self, data)
 		local lastJob = players[data.source]
-		local onDuty = data.onDuty == nil or data.onDuty
+		if not lastJob then return end
 
+		local onDuty = data.onDuty == nil or data.onDuty
 		if data.name == lastJob.name and onDuty == lastJob.onDuty then return end
 
 		players[data.source] = {
@@ -62,7 +63,7 @@ AddEventHandler('playerDropped', function()
 	local lastJob = players[source]
 	players[source] = nil
 
-	if lastJob.onDuty then jobs.remove(lastJob.name) end
+	if lastJob?.onDuty then jobs.remove(lastJob.name) end
 end)
 
 

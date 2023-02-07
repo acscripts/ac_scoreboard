@@ -10,23 +10,23 @@
     "format": "prettier --write \"./src/**/*.{ts,tsx,css}\""
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.2.9",
-    "@chakra-ui/styled-system": "^2.2.8",
-    "@emotion/react": "^11.10.0",
-    "@emotion/styled": "^11.10.0",
-    "framer-motion": "^7.2.1",
+    "@chakra-ui/react": "^2.4.9",
+    "@chakra-ui/styled-system": "^2.5.1",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "framer-motion": "^9.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.7.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.18.13",
-    "@types/node": "^18.7.13",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.1",
-    "prettier": "^2.7.1",
-    "typescript": "^4.6.4",
-    "vite": "^3.0.7"
+    "@babel/core": "^7.20.12",
+    "@types/node": "^18.13.0",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "prettier": "^2.8.3",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1"
   }
 }

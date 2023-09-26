@@ -38,7 +38,9 @@ local jobs = {
 			onDuty = onDuty,
 		}
 
-		if onDuty then self.add(data.name) end
+		if onDuty then
+			self.add(data.name)
+		end
 	end,
 
 	---@param data JobData
@@ -54,8 +56,12 @@ local jobs = {
 			onDuty = onDuty,
 		}
 
-		if onDuty then self.add(data.name) end
-		if lastJob.onDuty then self.remove(lastJob.name) end
+		if onDuty then
+			self.add(data.name)
+		end
+		if lastJob.onDuty then
+			self.remove(lastJob.name)
+		end
 	end
 }
 
@@ -63,9 +69,10 @@ AddEventHandler('playerDropped', function()
 	local lastJob = players[source]
 	players[source] = nil
 
-	if lastJob?.onDuty then jobs.remove(lastJob.name) end
+	if lastJob?.onDuty then
+		jobs.remove(lastJob.name)
+	end
 end)
-
 
 if core == 'esx' then
 	-- Credits to Linden (https://gist.github.com/thelindat/93311a4fd6ea6c1d4427438a533e228c)
@@ -116,6 +123,15 @@ elseif core == 'qb' then
 		})
 	end)
 
+	AddEventHandler('QBCore:Server:OnPlayerUnload', function(source)
+		local lastJob = players[source]
+		players[source] = nil
+
+		if lastJob?.onDuty then
+			jobs.remove(lastJob.name)
+		end
+	end)
+
 	AddEventHandler('QBCore:Player:SetPlayerData', function(player)
 		jobs:update({
 			name = player.job.name,
@@ -123,5 +139,4 @@ elseif core == 'qb' then
 			source = player.source
 		})
 	end)
-
 end

@@ -1,28 +1,22 @@
 <script lang="ts">
-  import type SheetConfig from '$types/config';
-
-  type $$Props = {
-    title: SheetConfig['title'];
-  };
-
-  export let title: $$Props['title'] = {};
+  import config from '$store/config';
 
   const handleMissingImage = () => {
-    title.logo = './logo.svg';
+    $config.title.logo = './logo.svg';
   };
 </script>
 
 <div class="flex h-8 select-none items-center gap-2">
-  {#if title.logo !== false}
+  {#if $config.title.logo !== false}
     <img
       class="h-full"
       style="color-scheme:dark;"
-      src={title.logo ?? 'defaultTitleLogo'}
+      src={$config.title.logo ?? 'defaultTitleLogo'}
       alt="Server logo"
       on:error={handleMissingImage}
     />
   {/if}
-  {#if title.text !== false}
-    <p class="text-xl font-semibold">{title.text}</p>
+  {#if $config.title.text !== false}
+    <p class="text-xl font-semibold">{$config.title.text}</p>
   {/if}
 </div>

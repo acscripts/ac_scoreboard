@@ -104,9 +104,9 @@
     >
       <Sheet.Content side={$config.side} showOverlay={$config.showOverlay} overlayBlurLevel={$config.overlayBlurLevel}>
         <div class="flex h-full flex-col gap-4">
-          <Title title={$config.title} />
+          <Title />
           <Players />
-          <Footer footer={$data.footer} />
+          <Footer />
         </div>
       </Sheet.Content>
     </Sheet.Root>

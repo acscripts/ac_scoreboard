@@ -46,7 +46,7 @@
   };
 </script>
 
-<button class="absolute m-2 rounded-md bg-background px-4 py-2" on:click={() => visibility.set(true)}>Open</button>
+<button class="absolute m-2 rounded-md bg-slate-800 px-4 py-2" on:click={() => visibility.set(true)}>Open</button>
 
 <VisibilityProvider>
   <main class="flex h-full w-full">

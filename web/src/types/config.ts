@@ -1,4 +1,10 @@
+type Title = {
+  text?: string;
+  logo?: string;
+};
+
 type SheetConfig = {
+  title: Title;
   side?: 'left' | 'right';
   showOverlay?: boolean;
   closeOnEscape?: boolean;

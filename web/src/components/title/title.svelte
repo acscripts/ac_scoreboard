@@ -7,10 +7,8 @@
 
   export let title: $$Props['title'] = {};
 
-  const defaultTitleLogo = './logo.svg';
-
   const handleMissingImage = () => {
-    title.logo = defaultTitleLogo;
+    title.logo = './logo.svg';
   };
 </script>
 
@@ -19,12 +17,12 @@
     <img
       class="h-full"
       style="color-scheme:dark;"
-      src={title.logo ?? defaultTitleLogo}
+      src={title.logo ?? 'defaultTitleLogo'}
       alt="Server logo"
       on:error={handleMissingImage}
     />
   {/if}
   {#if title.text !== false}
-    <p class="text-xl font-semibold">{title.text ?? 'AC Scoreboard'}</p>
+    <p class="text-xl font-semibold">{title.text}</p>
   {/if}
 </div>

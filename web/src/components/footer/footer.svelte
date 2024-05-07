@@ -3,7 +3,7 @@
   import { cn } from '$utils/misc';
   import type SheetData from '$types/data';
   import Icon from '@iconify/svelte';
-  import * as Tooltip from '../tooltip';
+  import * as Tooltip from '../lib/tooltip';
   import { copy } from 'svelte-copy';
 
   type $$Props = {

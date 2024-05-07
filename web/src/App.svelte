@@ -11,7 +11,7 @@
   import type SheetConfig from '$types/config';
   import type SheetData from '$types/data';
   import type Locales from '$types/locales';
-  import * as Sheet from './components/sheet';
+  import * as Sheet from './components/lib/sheet';
   import Title from './components/title/title.svelte';
   import Footer from './components/footer/footer.svelte';
 

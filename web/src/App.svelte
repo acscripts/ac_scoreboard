@@ -1,9 +1,9 @@
 <script lang="ts">
   import VisibilityProvider from './providers/VisibilityProvider.svelte';
-  import visibility from './store/visibility';
-  import config from './store/config';
-  import data from './store/data';
-  import locales from './store/locales';
+  import visibility from '$store/visibility';
+  import config from '$store/config';
+  import data from '$store/data';
+  import locales from '$store/locales';
   import { debugData } from '$utils/debugData';
   import { fetchNui } from '$utils/fetchNui';
   import { isEnvBrowser } from '$utils/misc';

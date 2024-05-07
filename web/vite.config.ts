@@ -15,6 +15,7 @@ export default defineConfig({
     alias: {
       $utils: path.resolve('./src/utils'),
       $types: path.resolve('./src/types'),
+      $store: path.resolve('./src/store'),
     },
   },
 });

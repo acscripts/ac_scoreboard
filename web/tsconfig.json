@@ -14,7 +14,9 @@
       "$utils": ["./src/utils"],
       "$utils/*": ["./src/utils/*"],
       "$types": ["./src/types"],
-      "$types/*": ["./src/types/*"]
+      "$types/*": ["./src/types/*"],
+      "$store": ["./src/store"],
+      "$store/*": ["./src/store/*"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],

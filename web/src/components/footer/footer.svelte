@@ -1,5 +1,5 @@
 <script lang="ts">
-  import locales from '../../store/locales';
+  import locales from '$store/locales';
   import { cn } from '$utils/misc';
   import type SheetData from '$types/data';
   import Icon from '@iconify/svelte';

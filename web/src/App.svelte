@@ -49,7 +49,7 @@
     }
   };
 
-  const defaultTitleLogo = 'https://docs.acscripts.dev/logo.svg';
+  const defaultTitleLogo = './logo.svg';
   const handleMissingImage = () => {
     config.title.logo = defaultTitleLogo;
   };

@@ -14,6 +14,7 @@
   import * as Sheet from './components/lib/sheet';
   import Title from './components/title/title.svelte';
   import Footer from './components/footer/footer.svelte';
+  import Players from './components/players/players.svelte';
 
   /*
   debugData<SheetConfig>([
@@ -103,7 +104,7 @@
       <Sheet.Content side={$config.side} showOverlay={$config.showOverlay} overlayBlurLevel={$config.overlayBlurLevel}>
         <div class="flex h-full flex-col gap-4">
           <Title title={$config.title} />
-          <div class="h-full">Hello world</div>
+          <Players />
           <Footer footer={$data.footer} />
         </div>
       </Sheet.Content>

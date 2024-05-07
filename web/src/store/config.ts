@@ -11,4 +11,6 @@ export default writable<SheetConfig>({
   closeOnOutsideClick: true,
   showOverlay: true,
   overlayBlurLevel: 'sm',
+  uppercaseNames: false,
+  compactPlayers: false,
 });

@@ -7,4 +7,9 @@ export default writable<SheetData>({
     playerCount: 63,
     maxPlayers: 100,
   },
+  players: [
+    { name: 'Bob', id: 7 },
+    { name: 'George Washington had very long name', id: 32 },
+    { name: 'Franta', id: 1 },
+  ],
 });

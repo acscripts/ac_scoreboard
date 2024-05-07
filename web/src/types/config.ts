@@ -10,6 +10,8 @@ type SheetConfig = {
   closeOnEscape?: boolean;
   closeOnOutsideClick?: boolean;
   overlayBlurLevel?: 'xs' | 'sm' | 'md' | 'lg';
+  uppercaseNames?: boolean;
+  compactPlayers?: boolean;
 };
 
 export type { SheetConfig as default };

@@ -1,12 +1,12 @@
 <script lang="ts">
   import VisibilityProvider from './providers/VisibilityProvider.svelte';
-  import Icon from '@iconify/svelte';
-  import { debugData } from './utils/debugData';
   import visibility from './store/visibility';
-  import { fetchNui } from './utils/fetchNui';
-  import * as Sheet from './components/sheet';
-  import type SheetConfig from './types/config';
+  import { debugData } from '$utils/debugData';
+  import { fetchNui } from '$utils/fetchNui';
   import { useNuiEvent } from '$utils/useNuiEvent';
+  import type SheetConfig from './types/config';
+  import * as Sheet from './components/sheet';
+  import Title from './components/title/title.svelte';
 
   debugData<SheetConfig>([
     {
@@ -50,11 +50,6 @@
       }, 300);
     }
   };
-
-  const defaultTitleLogo = './logo.svg';
-  const handleMissingImage = () => {
-    config.title.logo = defaultTitleLogo;
-  };
 </script>
 
 <button class="absolute m-2 rounded-md bg-slate-800 px-4 py-2" on:click={() => visibility.set(true)}>Open</button>
@@ -68,20 +63,7 @@
       closeOnOutsideClick={config.closeOnOutsideClick}
     >
       <Sheet.Content side={config.side} showOverlay={config.showOverlay} overlayBlurLevel={config.overlayBlurLevel}>
-        <div class="mb-4 flex h-8 items-center gap-2">
-          {#if config.title.logo !== false}
-            <img
-              class="h-full"
-              style="color-scheme:dark;"
-              src={config.title.logo ?? defaultTitleLogo}
-              alt="Server logo"
-              on:error={handleMissingImage}
-            />
-          {/if}
-          {#if config.title.text !== false}
-            <p class="text-xl font-semibold">{config.title.text ?? 'AC Scoreboard'}</p>
-          {/if}
-        </div>
+        <Title title={config.title} />
         Hello world
       </Sheet.Content>
     </Sheet.Root>

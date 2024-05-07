@@ -2,12 +2,14 @@
   import VisibilityProvider from './providers/VisibilityProvider.svelte';
   import visibility from './store/visibility';
   import config from './store/config';
+  import data from './store/data';
   import locales from './store/locales';
   import { debugData } from '$utils/debugData';
   import { fetchNui } from '$utils/fetchNui';
   import { isEnvBrowser } from '$utils/misc';
   import { useNuiEvent } from '$utils/useNuiEvent';
   import type SheetConfig from '$types/config';
+  import type SheetData from '$types/data';
   import type Locales from '$types/locales';
   import * as Sheet from './components/sheet';
   import Title from './components/title/title.svelte';
@@ -49,6 +51,10 @@
 
   useNuiEvent('setConfig', (newConfig: SheetConfig) => {
     config.set(newConfig);
+  });
+
+  useNuiEvent('setData', (newData: SheetData) => {
+    data.set(newData);
   });
 
   useNuiEvent('setLocales', (newLocales: Locales) => {
@@ -97,6 +103,7 @@
       <Sheet.Content side={$config.side} showOverlay={$config.showOverlay} overlayBlurLevel={$config.overlayBlurLevel}>
         <Title title={$config.title} />
         Hello world
+        <Footer footer={$data.footer} />
       </Sheet.Content>
     </Sheet.Root>
   </main>

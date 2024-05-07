@@ -101,9 +101,11 @@
       closeOnOutsideClick={$config.closeOnOutsideClick}
     >
       <Sheet.Content side={$config.side} showOverlay={$config.showOverlay} overlayBlurLevel={$config.overlayBlurLevel}>
-        <Title title={$config.title} />
-        Hello world
-        <Footer footer={$data.footer} />
+        <div class="flex h-full flex-col gap-4">
+          <Title title={$config.title} />
+          <div class="h-full">Hello world</div>
+          <Footer footer={$data.footer} />
+        </div>
       </Sheet.Content>
     </Sheet.Root>
   </main>

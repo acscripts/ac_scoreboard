@@ -12,7 +12,7 @@
   };
 </script>
 
-<div class="mb-4 flex h-8 items-center gap-2">
+<div class="flex h-8 select-none items-center gap-2">
   {#if title.logo !== false}
     <img
       class="h-full"

@@ -8,4 +8,5 @@ export default writable<Locales>({
   player_id: 'ID',
   copy_server_id: 'Copy your server ID',
   server_id_copied: 'Server ID copied',
+  anonymous_player: 'Anonymous player',
 });

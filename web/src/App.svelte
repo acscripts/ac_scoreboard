@@ -45,6 +45,7 @@
         player_id: 'ID',
         copy_server_id: 'Zkopírovat své server ID',
         server_id_copied: 'Server ID zkopírováno',
+        anonymous_player: 'Anonymní hráč',
       },
     },
   ]);

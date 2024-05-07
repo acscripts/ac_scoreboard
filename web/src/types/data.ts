@@ -5,8 +5,8 @@ type Footer = {
 };
 
 type Player = {
-  name: string;
-  id: number;
+  name?: string;
+  id?: number;
 };
 
 type SheetData = {

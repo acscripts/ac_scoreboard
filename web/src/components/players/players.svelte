@@ -3,7 +3,6 @@
   import config from '$store/config';
   import locales from '$store/locales';
   import { cn } from '$utils/misc';
-  import type SheetData from '$types/data';
 </script>
 
 <div class="flex h-full flex-col gap-1">
@@ -15,8 +14,10 @@
         $config.compactPlayers ? 'py-1' : 'py-2'
       )}
     >
-      <span class="truncate">{player.name}</span>
-      <span class="min-w-9 flex-shrink-0 rounded-md bg-slate-800 px-2 text-center">{player.id}</span>
+      <span class="truncate">{player.name ?? $locales.anonymous_player}</span>
+      {#if player.id !== undefined}
+        <span class="min-w-9 flex-shrink-0 rounded-md bg-slate-800 px-2 text-center">{player.id}</span>
+      {/if}
     </div>
   {/each}
 </div>

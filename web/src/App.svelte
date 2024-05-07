@@ -4,7 +4,7 @@
   import { debugData } from '$utils/debugData';
   import { fetchNui } from '$utils/fetchNui';
   import { useNuiEvent } from '$utils/useNuiEvent';
-  import type SheetConfig from './types/config';
+  import type SheetConfig from '$types/config';
   import * as Sheet from './components/sheet';
   import Title from './components/title/title.svelte';
 

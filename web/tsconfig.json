@@ -12,7 +12,9 @@
     "baseUrl": ".",
     "paths": {
       "$utils": ["./src/utils"],
-      "$utils/*": ["./src/utils/*"]
+      "$utils/*": ["./src/utils/*"],
+      "$types": ["./src/types"],
+      "$types/*": ["./src/types/*"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],

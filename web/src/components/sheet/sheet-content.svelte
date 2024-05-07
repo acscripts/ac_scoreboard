@@ -3,7 +3,7 @@
   import { fly } from 'svelte/transition';
   import { SheetOverlay, SheetPortal, type Side, sheetTransitions, sheetVariants } from './index';
   import { cn } from '$utils/misc';
-  import type SheetConfig from '../../types/config';
+  import type SheetConfig from '$types/config';
 
   type $$Props = SheetPrimitive.ContentProps & {
     side?: Side;

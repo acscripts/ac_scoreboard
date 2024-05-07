@@ -1,6 +1,6 @@
 import './index.pcss';
 import App from './App.svelte';
-import { isEnvBrowser } from './utils/misc';
+import { isEnvBrowser } from '$utils/misc';
 
 const app = new App({
   target: document.getElementById('app')!,

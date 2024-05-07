@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type SheetConfig from '../../types/config';
+  import type SheetConfig from '$types/config';
 
   type $$Props = {
     title: SheetConfig['title'];

@@ -15,6 +15,8 @@
         title: {
           // text: 'Hypen RP',
           // logo: 'https://static.hypen.cz/images/web/hypen-logo.svg',
+          // text: false,
+          // logo: false,
         },
         side: 'right',
         closeOnEscape: true,
@@ -66,15 +68,19 @@
       closeOnOutsideClick={config.closeOnOutsideClick}
     >
       <Sheet.Content side={config.side} showOverlay={config.showOverlay} overlayBlurLevel={config.overlayBlurLevel}>
-        <div class="mb-4 flex items-center gap-2">
-          <img
-            class="h-8"
-            style="color-scheme:dark;"
-            src={config.title.logo ?? defaultTitleLogo}
-            alt="Server logo"
-            on:error={handleMissingImage}
-          />
-          <p class="text-xl font-semibold">{config.title.text ?? 'AC Scoreboard'}</p>
+        <div class="mb-4 flex h-8 items-center gap-2">
+          {#if config.title.logo !== false}
+            <img
+              class="h-full"
+              style="color-scheme:dark;"
+              src={config.title.logo ?? defaultTitleLogo}
+              alt="Server logo"
+              on:error={handleMissingImage}
+            />
+          {/if}
+          {#if config.title.text !== false}
+            <p class="text-xl font-semibold">{config.title.text ?? 'AC Scoreboard'}</p>
+          {/if}
         </div>
         Hello world
       </Sheet.Content>

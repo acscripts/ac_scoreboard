@@ -1,6 +1,6 @@
 type Title = {
-  text?: string;
-  logo?: string;
+  text?: string | false;
+  logo?: string | false;
 };
 
 type SheetConfig = {

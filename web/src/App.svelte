@@ -3,6 +3,7 @@
   import visibility from './store/visibility';
   import { debugData } from '$utils/debugData';
   import { fetchNui } from '$utils/fetchNui';
+  import { isEnvBrowser } from '$utils/misc';
   import { useNuiEvent } from '$utils/useNuiEvent';
   import type SheetConfig from '$types/config';
   import * as Sheet from './components/sheet';
@@ -50,9 +51,18 @@
       }, 300);
     }
   };
+
+  if (isEnvBrowser()) {
+    isOpened = true;
+    visibility.set(true);
+  }
 </script>
 
-<button class="absolute m-2 rounded-md bg-slate-800 px-4 py-2" on:click={() => visibility.set(true)}>Open</button>
+{#if isEnvBrowser()}
+  <div class="absolute flex w-full justify-center">
+    <button class="m-2 rounded-md bg-slate-800 px-4 py-2" on:click={() => visibility.set(true)}>Show</button>
+  </div>
+{/if}
 
 <VisibilityProvider>
   <main class="flex h-full w-full">

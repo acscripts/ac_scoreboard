@@ -20,4 +20,9 @@ export default writable<SheetData>({
     { name: 'Franta', id: 1 },
     { name: 'Zoo', id: 60 },
   ],
+  statusIndicators: [
+    { label: 'House robbery', icon: 'mdi:house', isActive: true },
+    { label: 'Store robbery', icon: 'mdi:store', isActive: true },
+    { label: 'Bank robbery', icon: 'mdi:bank', isActive: false },
+  ],
 });

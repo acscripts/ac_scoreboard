@@ -13,9 +13,10 @@
   import type Locales from '$types/locales';
   import * as Sheet from './components/lib/sheet';
   import Title from './components/title.svelte';
-  import Footer from './components/footer.svelte';
-  import Players from './components/players.svelte';
   import Groups from './components/groups.svelte';
+  import Players from './components/players.svelte';
+  import StatusIndicators from './components/status-indicators.svelte';
+  import Footer from './components/footer.svelte';
 
   /*
   debugData<SheetConfig>([
@@ -124,7 +125,10 @@
             <Groups />
             <Players />
           </div>
-          <Footer />
+          <div class="flex flex-col gap-4">
+            <StatusIndicators />
+            <Footer />
+          </div>
         </div>
       </Sheet.Content>
     </Sheet.Root>

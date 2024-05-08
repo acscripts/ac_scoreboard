@@ -5,8 +5,8 @@ type Footer = {
 };
 
 type Group = {
-  name?: string;
-  count?: number;
+  name: string;
+  count: number;
 };
 
 type Player = {
@@ -14,10 +14,17 @@ type Player = {
   id?: number;
 };
 
+type StatusIndicator = {
+  label: string;
+  icon: string;
+  isActive: boolean;
+};
+
 type SheetData = {
   footer: Footer;
   groups: Group[];
   players: Player[];
+  statusIndicators: StatusIndicator[];
 };
 
 export type { SheetData as default };

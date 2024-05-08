@@ -14,7 +14,7 @@
   };
 </script>
 
-<div class="text-md flex select-none items-center justify-center gap-2">
+<div class="flex select-none flex-wrap items-center justify-center gap-2">
   <Tooltip.Root openDelay={250} closeOnPointerDown={false}>
     <Tooltip.Trigger>
       <div

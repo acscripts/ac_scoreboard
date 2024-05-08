@@ -10,8 +10,9 @@ export default writable<SheetConfig>({
   closeOnEscape: true,
   closeOnOutsideClick: true,
   showOverlay: true,
-  overlayBlurLevel: 'sm',
+  overlayBlur: 'sm',
+  compactRows: false,
   uppercaseNames: false,
-  compactPlayers: false,
   playerColumns: 1,
+  groupColumns: 1,
 });

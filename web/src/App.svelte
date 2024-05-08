@@ -15,6 +15,7 @@
   import Title from './components/title.svelte';
   import Footer from './components/footer.svelte';
   import Players from './components/players.svelte';
+  import Groups from './components/groups.svelte';
 
   /*
   debugData<SheetConfig>([
@@ -25,10 +26,26 @@
           text: 'Hypen RP',
           logo: 'https://static.hypen.cz/images/web/hypen-logo.svg',
         },
-        side: 'left',
-        closeOnEscape: false,
+        side: 'right',
+        showOverlay: true,
+        closeOnEscape: true,
         closeOnOutsideClick: true,
-        showOverlay: false,
+        overlayBlur: 'sm',
+        uppercaseNames: false,
+        compactRows: false,
+        playerColumns: 1,
+        groupColumns: 1,
+
+        // alternative values
+        // side: 'left',
+        // showOverlay: false,
+        // closeOnEscape: false,
+        // closeOnOutsideClick: false,
+        // overlayBlur: 'xl',
+        // uppercaseNames: true,
+        // compactRows: true,
+        // playerColumns: 2,
+        // groupColumns: 2,
       },
     },
   ]);
@@ -100,10 +117,13 @@
       closeOnEscape={$config.closeOnEscape}
       closeOnOutsideClick={$config.closeOnOutsideClick}
     >
-      <Sheet.Content side={$config.side} showOverlay={$config.showOverlay} overlayBlurLevel={$config.overlayBlurLevel}>
-        <div class="flex h-full flex-col gap-4">
+      <Sheet.Content side={$config.side} showOverlay={$config.showOverlay} overlayBlur={$config.overlayBlur}>
+        <div class="flex h-full flex-col gap-6">
           <Title />
-          <Players />
+          <div class="flex h-full flex-col gap-6 overflow-y-auto">
+            <Groups />
+            <Players />
+          </div>
           <Footer />
         </div>
       </Sheet.Content>

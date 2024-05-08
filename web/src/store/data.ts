@@ -7,6 +7,13 @@ export default writable<SheetData>({
     playerCount: 63,
     maxPlayers: 100,
   },
+  groups: [
+    { name: 'Police', count: 7 },
+    { name: 'EMS', count: 6 },
+    { name: 'Mechanics', count: 2 },
+    { name: 'Taxi', count: 1 },
+    { name: 'Unemployed', count: 47 },
+  ],
   players: [
     { name: 'Bob', id: 7 },
     { name: 'George Washington had very long name', id: 32 },

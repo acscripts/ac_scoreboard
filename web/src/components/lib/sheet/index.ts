@@ -24,6 +24,9 @@ export const sheetVariants = tv({
       right: 'inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm',
     },
   },
+  defaultVariants: {
+    side: 'right',
+  },
 });
 
 export const sheetTransitions = {

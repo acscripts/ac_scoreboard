@@ -4,6 +4,11 @@ type Footer = {
   maxPlayers: number;
 };
 
+type Group = {
+  name?: string;
+  count?: number;
+};
+
 type Player = {
   name?: string;
   id?: number;
@@ -11,6 +16,7 @@ type Player = {
 
 type SheetData = {
   footer: Footer;
+  groups: Group[];
   players: Player[];
 };
 

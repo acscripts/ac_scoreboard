@@ -3,16 +3,19 @@ type Title = {
   logo?: string | false;
 };
 
+type OverlayBlurLevel = 'xs' | 'sm' | 'md' | 'lg';
+
 type SheetConfig = {
   title: Title;
   side?: 'left' | 'right';
   showOverlay?: boolean;
   closeOnEscape?: boolean;
   closeOnOutsideClick?: boolean;
-  overlayBlurLevel?: 'xs' | 'sm' | 'md' | 'lg';
+  overlayBlur?: OverlayBlurLevel | false;
   uppercaseNames?: boolean;
-  compactPlayers?: boolean;
+  compactRows?: boolean;
   playerColumns?: 1 | 2;
+  groupColumns?: 1 | 2;
 };
 
-export type { SheetConfig as default };
+export type { SheetConfig as default, OverlayBlurLevel };

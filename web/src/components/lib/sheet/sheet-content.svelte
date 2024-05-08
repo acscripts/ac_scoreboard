@@ -8,13 +8,13 @@
   type $$Props = SheetPrimitive.ContentProps & {
     side?: Side;
     showOverlay?: SheetConfig['showOverlay'];
-    overlayBlurLevel?: SheetConfig['overlayBlurLevel'];
+    overlayBlur?: SheetConfig['overlayBlur'];
   };
 
   let className: $$Props['class'] = undefined;
   export let side: $$Props['side'] = 'right';
   export let showOverlay: $$Props['showOverlay'] = true;
-  export let overlayBlurLevel: $$Props['overlayBlurLevel'] = 'sm';
+  export let overlayBlur: $$Props['overlayBlur'] = 'sm';
   export { className as class };
   export let inTransition: $$Props['inTransition'] = fly;
   export let inTransitionConfig: $$Props['inTransitionConfig'] = sheetTransitions[side ?? 'right'].in;
@@ -24,7 +24,7 @@
 
 <SheetPortal>
   {#if showOverlay}
-    <SheetOverlay {overlayBlurLevel} />
+    <SheetOverlay {overlayBlur} />
   {/if}
   <SheetPrimitive.Content
     {inTransition}

@@ -39,10 +39,8 @@
     {
       action: 'setLocales',
       data: {
-        group_name: 'Skupina',
-        group_count: 'Počet',
-        player_name: 'Hráč',
-        player_id: 'ID',
+        groups: 'Skupiny',
+        players: 'Hráči',
         copy_server_id: 'Zkopírovat své server ID',
         server_id_copied: 'Server ID zkopírováno',
         anonymous_player: 'Anonymní hráč',

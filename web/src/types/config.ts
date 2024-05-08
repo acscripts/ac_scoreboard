@@ -12,6 +12,7 @@ type SheetConfig = {
   overlayBlurLevel?: 'xs' | 'sm' | 'md' | 'lg';
   uppercaseNames?: boolean;
   compactPlayers?: boolean;
+  playerColumns?: 1 | 2;
 };
 
 export type { SheetConfig as default };

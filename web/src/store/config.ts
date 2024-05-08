@@ -13,4 +13,5 @@ export default writable<SheetConfig>({
   overlayBlurLevel: 'sm',
   uppercaseNames: false,
   compactPlayers: false,
+  playerColumns: 1,
 });

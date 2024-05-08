@@ -11,5 +11,6 @@ export default writable<SheetData>({
     { name: 'Bob', id: 7 },
     { name: 'George Washington had very long name', id: 32 },
     { name: 'Franta', id: 1 },
+    { name: 'Zoo', id: 60 },
   ],
 });

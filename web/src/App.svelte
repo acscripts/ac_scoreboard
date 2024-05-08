@@ -12,9 +12,9 @@
   import type SheetData from '$types/data';
   import type Locales from '$types/locales';
   import * as Sheet from './components/lib/sheet';
-  import Title from './components/title/title.svelte';
-  import Footer from './components/footer/footer.svelte';
-  import Players from './components/players/players.svelte';
+  import Title from './components/title.svelte';
+  import Footer from './components/footer.svelte';
+  import Players from './components/players.svelte';
 
   /*
   debugData<SheetConfig>([

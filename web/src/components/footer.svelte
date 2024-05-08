@@ -4,7 +4,7 @@
   import { cn } from '$utils/misc';
   import { copy } from 'svelte-copy';
   import Icon from '@iconify/svelte';
-  import * as Tooltip from '../lib/tooltip';
+  import * as Tooltip from './lib/tooltip';
 
   let hasCopied = false;
 

@@ -9,9 +9,9 @@ type SheetConfig = {
   title: Title;
   side?: 'left' | 'right';
   showOverlay?: boolean;
+  overlayBlur?: OverlayBlurLevel | false;
   closeOnEscape?: boolean;
   closeOnOutsideClick?: boolean;
-  overlayBlur?: OverlayBlurLevel | false;
   uppercaseNames?: boolean;
   compactRows?: boolean;
   playerColumns?: 1 | 2;

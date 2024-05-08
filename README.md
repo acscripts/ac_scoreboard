@@ -23,4 +23,6 @@ Report bugs using [GitHub issues](https://github.com/acscripts/ac_scoreboard/iss
 
 ### See the documentation [here](https://docs.acscripts.dev/scoreboard)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/M7YQ5vicwKo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<a href="https://youtu.be/M7YQ5vicwKo">
+    <img src="https://i3.ytimg.com/vi/M7YQ5vicwKo/maxresdefault.jpg" alt="Youtube Preview" width="600">
+</a>

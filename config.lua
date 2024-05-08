@@ -1,47 +1,56 @@
----------------------------------------------------------------------------------------------
--- More detailed description of each config option can be found in 'docs/config.md' file.
----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------
+-- Visit https://docs.acscripts.dev/scoreboard for documentation
+-----------------------------------------------------------------
 
-ac = {
-	-- Language for the UI
-	locale = 'en',
+return {
+    settings = {
+        title = {
+            text = 'AC Scoreboard',
+            logo = 'https://static.hypen.cz/images/web/hypen-logo.svg',
+        },
 
-	-- Whether to check for newer resource version and notify in server console.
-	versionCheck = true,
+        side = 'right',
 
-	-- Server name shown in the scoreboard header.
-	serverName = 'AC Scoreboard',
+        showOverlay = true,
 
-	-- Command name to open the scoreboard UI.
-	commandName = 'scoreboard',
+        overlayBlur = 'sm',
 
-	-- Default keybind for the '/scoreboard' command.
-	commandKey = 'DELETE',
+        closeOnEscape = true,
 
-	-- Which parts of the scoreboard should be visible (both, groups, players).
-	visibleParts = 'both',
+        closeOnOutsideClick = true,
 
-	-- On which side of the screen the scoreboard should be (left, right).
-	drawerSide = 'right',
+        uppercaseNames = false,
 
-	-- Group list shown in the scoreboard.
-	groupList = {
-		{
-			label = 'Police',
-			groups = {'police', 'sheriff'}
-		},
-		{
-			label = 'EMS',
-			groups = {'ambulance'},
-			separator = true
-		},
-		{
-			label = 'Taxi',
-			groups = {'taxi'}
-		},
-		{
-			label = 'Mechanic',
-			groups = {'mechanic', 'lsc', 'bennys'}
-		}
-	}
+        compactRows = false,
+
+        playerColumns = 1,
+
+        groupColumns = 1,
+    },
+
+    -- Command name for opening the scoreboard
+    commandName = 'scoreboard',
+
+    -- Default keybind for the '/scoreboard' command
+    commandKey = 'DELETE',
+
+    -- Group list shown in the scoreboard
+    groups = {
+        {
+            label = 'Police',
+            groups = {'police', 'sheriff'},
+        },
+        {
+            label = 'EMS',
+            groups = {'ambulance'},
+        },
+        {
+            label = 'Mechanics',
+            groups = {'lsc', 'bennys', 'hayes'},
+        },
+        {
+            label = 'Taxi',
+            groups = {'taxi'},
+        },
+    }
 }

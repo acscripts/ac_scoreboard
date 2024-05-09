@@ -17,6 +17,6 @@
     />
   {/if}
   {#if $config.title.text !== false}
-    <p class="text-xl font-semibold">{$config.title.text}</p>
+    <p class="text-xl font-semibold">{$config.title.text ?? 'AC Scoreboard'}</p>
   {/if}
 </div>

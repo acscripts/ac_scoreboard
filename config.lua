@@ -6,7 +6,7 @@ return {
     settings = {
         title = {
             text = 'AC Scoreboard',
-            logo = 'https://static.hypen.cz/images/web/hypen-logo.svg',
+            logo = 'https://cfx-nui-ac_scoreboard/web/build/logo.svg',
         },
 
         side = 'right',

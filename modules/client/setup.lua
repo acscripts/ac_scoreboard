@@ -40,3 +40,10 @@ AddEventHandler('ox_lib:setLocale', function()
         data = getUiLocales(),
     })
 end)
+
+
+
+RegisterNUICallback('copyServerId', function(_, cb)
+    cb(1)
+    lib.setClipboard(tostring(cache.serverId))
+end)

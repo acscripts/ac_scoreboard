@@ -28,6 +28,10 @@ return {
         groupColumns = 1,
     },
 
+    showPlayerIds = true,
+
+    anonymizePlayerNames = false,
+
     -- Command name for opening the scoreboard
     commandName = 'scoreboard',
 

@@ -1,2 +1,2 @@
 require 'modules.client.main'
-require 'modules.client.locales'
+require 'modules.client.setup'

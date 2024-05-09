@@ -11,9 +11,7 @@ return {
 
         side = 'right',
 
-        showOverlay = true,
-
-        overlayBlur = 'sm',
+        showOverlay = false,
 
         closeOnEscape = true,
 

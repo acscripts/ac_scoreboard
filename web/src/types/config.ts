@@ -3,13 +3,10 @@ type Title = {
   logo?: string | false;
 };
 
-type OverlayBlurLevel = 'xs' | 'sm' | 'md' | 'lg';
-
 type SheetConfig = {
   title: Title;
   side?: 'left' | 'right';
   showOverlay?: boolean;
-  overlayBlur?: OverlayBlurLevel | false;
   closeOnEscape?: boolean;
   closeOnOutsideClick?: boolean;
   uppercaseNames?: boolean;
@@ -18,4 +15,4 @@ type SheetConfig = {
   groupColumns?: 1 | 2;
 };
 
-export type { SheetConfig as default, OverlayBlurLevel };
+export type { SheetConfig as default };

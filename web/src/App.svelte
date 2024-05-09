@@ -28,10 +28,9 @@
           logo: 'https://static.hypen.cz/images/web/hypen-logo.svg',
         },
         side: 'right',
-        showOverlay: true,
+        showOverlay: false,
         closeOnEscape: true,
         closeOnOutsideClick: true,
-        overlayBlur: 'sm',
         uppercaseNames: false,
         compactRows: false,
         playerColumns: 1,
@@ -39,10 +38,9 @@
 
         // alternative values
         // side: 'left',
-        // showOverlay: false,
+        // showOverlay: true,
         // closeOnEscape: false,
         // closeOnOutsideClick: false,
-        // overlayBlur: 'xl',
         // uppercaseNames: true,
         // compactRows: true,
         // playerColumns: 2,
@@ -67,6 +65,10 @@
   ]);
   */
 
+  let isOpened = false;
+
+  fetchNui('ready');
+
   useNuiEvent('setConfig', (newConfig: SheetConfig) => {
     config.set(newConfig);
   });
@@ -79,22 +81,20 @@
     locales.set(newLocales);
   });
 
-  let isOpened: boolean;
-
-  visibility.subscribe((visible) => {
+  useNuiEvent('setVisible', (visible: boolean) => {
     if (visible) {
-      setTimeout(() => {
-        isOpened = true;
-      }, 500);
+      visibility.set(true);
+      setTimeout(() => (isOpened = true), 0);
+    } else {
+      isOpened = false;
+      setTimeout(() => visibility.set(false), 300);
     }
   });
 
   const onOpenChange = (open: boolean) => {
     if (!open) {
-      setTimeout(() => {
-        visibility.set(false);
-        fetchNui('close');
-      }, 300);
+      fetchNui('close');
+      setTimeout(() => visibility.set(false), 300);
     }
   };
 
@@ -118,7 +118,7 @@
       closeOnEscape={$config.closeOnEscape}
       closeOnOutsideClick={$config.closeOnOutsideClick}
     >
-      <Sheet.Content side={$config.side} showOverlay={$config.showOverlay} overlayBlur={$config.overlayBlur}>
+      <Sheet.Content side={$config.side} showOverlay={$config.showOverlay}>
         <div class="flex h-full flex-col gap-6">
           <Title />
           <div class="flex h-full flex-col gap-6 overflow-y-auto">

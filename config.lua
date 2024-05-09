@@ -28,6 +28,13 @@ return {
         groupColumns = 1,
     },
 
+    visibleSections = {
+        groups = true,
+        players = true,
+        statusIndicators = true,
+        footer = true,
+    },
+
     showPlayerIds = true,
 
     anonymizePlayerNames = false,

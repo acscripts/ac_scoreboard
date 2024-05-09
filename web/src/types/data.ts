@@ -21,10 +21,10 @@ type StatusIndicator = {
 };
 
 type SheetData = {
-  footer: Footer;
-  groups: Group[];
-  players: Player[];
-  statusIndicators: StatusIndicator[];
+  footer?: Footer;
+  groups?: Group[];
+  players?: Player[];
+  statusIndicators?: StatusIndicator[];
 };
 
 export type { SheetData as default };

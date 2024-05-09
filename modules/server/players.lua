@@ -1,7 +1,4 @@
-local Config = require 'config'
 local Players = {}
-
-
 
 AddEventHandler('playerJoining', function()
     local playerId = tostring(source)
@@ -18,26 +15,22 @@ CreateThread(function()
     end
 end)
 
-
-
-lib.callback.register('ac_scoreboard:getPlayerData', function(playerId)
-    print(playerId)
-
-    local showPlayerNames = not Config.anonymizePlayerNames or IsPlayerAceAllowed(playerId, 'ac_scoreboard.showPlayerNames')
-    local showPlayerIds = Config.showPlayerIds or IsPlayerAceAllowed(playerId, 'ac_scoreboard.showPlayerIds')
-
+---@param playerNames boolean
+---@param playerIds boolean
+---@return table[]
+local function getPlayers(playerNames, playerIds)
     local players = {}
     local index = 1
 
     for id, name in pairs(Players) do
         local data = {}
 
-        if showPlayerIds then
-            data.id = id
+        if playerNames then
+            data.name = name
         end
 
-        if showPlayerNames then
-            data.name = name
+        if playerIds then
+            data.id = id
         end
 
         players[index] = data
@@ -47,9 +40,9 @@ lib.callback.register('ac_scoreboard:getPlayerData', function(playerId)
     -- local payload = msgpack.pack_args(players)
     -- print('size', #payload)
 
-    return {
-        players = players,
-        maxPlayers = GetConvarInt('sv_maxclients', 0), -- still waiting for the day when we can subscribe to convar changes
-        playerCount = GetNumPlayerIndices(),
-    }
-end)
+    return players
+end
+
+return {
+    getPlayers = getPlayers,
+}

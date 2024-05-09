@@ -14,24 +14,15 @@ local function openScoreboard()
 
     isOpened = true
 
-    print('retard')
+    local data = lib.callback.await('ac_scoreboard:getServerData', false)
 
-    local data = lib.callback.await('ac_scoreboard:getPlayerData', false)
-
-    print(data)
+    if data.footer then
+        data.footer.serverId = cache.serverId
+    end
 
     SendNUIMessage({
         action = 'setData',
-        data = {
-            footer = {
-                serverId = cache.serverId,
-                playerCount = data.playerCount,
-                maxPlayers = data.maxPlayers,
-            },
-            groups = {},
-            players = data.players,
-            statusIndicators = {},
-        },
+        data = data,
     })
 
     SetNuiFocus(true, true)

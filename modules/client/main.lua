@@ -1,12 +1,7 @@
 local Config = require 'config'
-
 local isOpened = false
 
 
-
-local function closeScoreboard()
-
-end
 
 local function openScoreboard()
     if isOpened then
@@ -52,4 +47,20 @@ end)
 
 
 
+TriggerEvent('chat:addSuggestion', ('/%s'):format(Config.commandName), locale('command_open'))
 RegisterCommand(Config.commandName, openScoreboard, false)
+
+if Config.commandKey then
+	RegisterKeyMapping(Config.commandName, locale('keymap_open'), 'keyboard', Config.commandKey)
+end
+
+
+
+AddEventHandler('onResourceStop', function(resource)
+    if resource == cache.resource then
+        if isOpened then
+            SetNuiFocus(false, false)
+            SetNuiFocusKeepInput(false)
+        end
+    end
+end)

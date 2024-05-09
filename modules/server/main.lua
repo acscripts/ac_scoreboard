@@ -18,25 +18,32 @@ end)
 local visibleSections = Config.visibleSections
 local Players = visibleSections.players and require 'modules.server.players'
 
+---@param playerId string
+---@param section string
+---@return boolean
+local function canShowSection(playerId, section)
+    local state = visibleSections[section]
+    return state == true or state == 'limited' and IsPlayerAceAllowed(playerId, ('scoreboard.show.%s'):format(section))
+end
+
 lib.callback.register('ac_scoreboard:getServerData', function(playerId)
     local payload = {}
 
-    if visibleSections.players and Players then
-        local showPlayerNames = not Config.anonymizePlayerNames or IsPlayerAceAllowed(playerId, 'ac_scoreboard.showPlayerNames')
-        local showPlayerIds = Config.showPlayerIds or IsPlayerAceAllowed(playerId, 'ac_scoreboard.showPlayerIds')
-
+    if Players and canShowSection(playerId, 'players') then
+        local showPlayerNames = canShowSection(playerId, 'playerNames')
+        local showPlayerIds = canShowSection(playerId, 'playerIds')
         payload.players = Players.getPlayers(showPlayerNames, showPlayerIds)
     end
 
-    if visibleSections.groups then
+    if canShowSection(playerId, 'groups') then
         payload.groups = {}
     end
 
-    if visibleSections.statusIndicators then
+    if canShowSection(playerId, 'statusIndicators') then
         payload.statusIndicators = {}
     end
 
-    if visibleSections.footer then
+    if canShowSection(playerId, 'footer') then
         payload.footer = {
             maxPlayers = GetConvarInt('sv_maxclients', 0), -- still waiting for the day when we can subscribe to convar changes
             playerCount = GetNumPlayerIndices(),

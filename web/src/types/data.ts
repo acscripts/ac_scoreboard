@@ -11,7 +11,7 @@ type Group = {
 
 type Player = {
   name?: string;
-  id?: number;
+  id?: string;
 };
 
 type StatusIndicator = {

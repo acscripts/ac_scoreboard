@@ -31,13 +31,11 @@ return {
     visibleSections = {
         groups = true,
         players = true,
+        playerNames = true,
+        playerIds = true,
         statusIndicators = true,
         footer = true,
     },
-
-    showPlayerIds = true,
-
-    anonymizePlayerNames = false,
 
     -- Command name for opening the scoreboard
     commandName = 'scoreboard',

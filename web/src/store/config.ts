@@ -11,7 +11,8 @@ export default writable<SheetConfig>({
   closeOnEscape: true,
   closeOnOutsideClick: true,
   uppercaseNames: false,
-  compactRows: false,
+  compactPlayers: false,
+  compactGroups: false,
   playerColumns: 1,
   groupColumns: 1,
 });

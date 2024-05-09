@@ -10,7 +10,8 @@ type SheetConfig = {
   closeOnEscape?: boolean;
   closeOnOutsideClick?: boolean;
   uppercaseNames?: boolean;
-  compactRows?: boolean;
+  compactPlayers?: boolean;
+  compactGroups?: boolean;
   playerColumns?: 1 | 2;
   groupColumns?: 1 | 2;
 };

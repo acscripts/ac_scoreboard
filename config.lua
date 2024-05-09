@@ -19,7 +19,9 @@ return {
 
         uppercaseNames = false,
 
-        compactRows = false,
+        compactPlayers = false,
+
+        compactGroups = false,
 
         playerColumns = 1,
 

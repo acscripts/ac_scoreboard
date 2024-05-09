@@ -13,7 +13,7 @@
       <div
         class={cn(
           'flex items-center justify-between gap-2 rounded-md bg-slate-700 px-2',
-          $config.compactRows ? 'py-1' : 'py-2'
+          $config.compactGroups ? 'py-1' : 'py-2'
         )}
       >
         <span class="truncate">{group.name}</span>

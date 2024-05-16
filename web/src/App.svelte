@@ -67,6 +67,11 @@
 
   let isOpened = false;
 
+  if (isEnvBrowser()) {
+    isOpened = true;
+    visibility.set(true);
+  }
+
   fetchNui('ready');
 
   useNuiEvent('setConfig', (newConfig: SheetConfig) => {
@@ -97,16 +102,14 @@
       setTimeout(() => visibility.set(false), 300);
     }
   };
-
-  if (isEnvBrowser()) {
-    isOpened = true;
-    visibility.set(true);
-  }
 </script>
 
 {#if isEnvBrowser()}
   <div class="absolute flex w-full justify-center">
-    <button class="m-2 rounded-md bg-slate-800 px-4 py-2" on:click={() => visibility.set(true)}>Show</button>
+    <button
+      class="m-2 rounded-md bg-slate-800 px-4 py-2"
+      on:click={() => debugData([{ action: 'setVisible', data: true }], 0)}>Show</button
+    >
   </div>
 {/if}
 

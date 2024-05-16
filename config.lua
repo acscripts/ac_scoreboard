@@ -19,6 +19,8 @@ return {
 
         uppercaseNames = false,
 
+        highlightEmptyGroups = true,
+
         compactPlayers = false,
 
         compactGroups = false,

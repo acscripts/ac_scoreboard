@@ -18,7 +18,12 @@
           )}
         >
           <span class="truncate">{group.label}</span>
-          <span class="min-w-9 flex-shrink-0 select-none rounded-md bg-slate-800 px-2 text-center">{group.count}</span>
+          <span
+            class={cn(
+              'min-w-9 flex-shrink-0 select-none rounded-md bg-slate-800 px-2 text-center',
+              $config.highlightEmptyGroups && group.count === 0 && ' text-red-400'
+            )}>{group.count}</span
+          >
         </div>
       {/each}
     </div>

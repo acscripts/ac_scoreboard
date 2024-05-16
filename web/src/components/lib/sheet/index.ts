@@ -1,6 +1,5 @@
 import { Dialog as SheetPrimitive } from 'bits-ui';
 import { type VariantProps, tv } from 'tailwind-variants';
-
 import Portal from './sheet-portal.svelte';
 import Overlay from './sheet-overlay.svelte';
 import Content from './sheet-content.svelte';
@@ -11,7 +10,6 @@ export {
   Root,
   Content,
   //
-  Root as Sheet,
   Portal as SheetPortal,
   Overlay as SheetOverlay,
 };

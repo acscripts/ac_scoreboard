@@ -17,7 +17,7 @@
             $config.compactGroups ? 'py-1' : 'py-2'
           )}
         >
-          <span class="truncate">{group.name}</span>
+          <span class="truncate">{group.label}</span>
           <span class="min-w-9 flex-shrink-0 select-none rounded-md bg-slate-800 px-2 text-center">{group.count}</span>
         </div>
       {/each}

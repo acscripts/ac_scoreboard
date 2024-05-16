@@ -3,20 +3,29 @@ local Utils = require 'modules.server.utils'
 
 lib.versionCheck('acscripts/ac_scoreboard')
 
+
+
+local visibleSections = Config.visibleSections
+local Players = nil
+local Groups = nil
+
 SetTimeout(0, function()
-    if Utils.hasExport('ox_core.GetPlayer') then
-        require 'modules.server.framework.ox'
-    elseif Utils.hasExport('es_extended.getSharedObject') then
-        require 'modules.server.framework.esx'
-    elseif Utils.hasExport('qb-core.GetCoreObject') then
-        require 'modules.server.framework.qb'
+    if visibleSections.players then
+        Players = require 'modules.server.players'
+    end
+
+    if visibleSections.groups then
+        if Utils.hasExport('ox_core.GetPlayer') then
+            Groups = require 'modules.server.framework.ox'
+        elseif Utils.hasExport('es_extended.getSharedObject') then
+            Groups = require 'modules.server.framework.esx'
+        elseif Utils.hasExport('qb-core.GetCoreObject') then
+            Groups = require 'modules.server.framework.qb'
+        end
     end
 end)
 
 
-
-local visibleSections = Config.visibleSections
-local Players = visibleSections.players and require 'modules.server.players'
 
 ---@param playerId string
 ---@param section string
@@ -35,8 +44,8 @@ lib.callback.register('ac_scoreboard:getServerData', function(playerId)
         payload.players = Players.getPlayers(showPlayerNames, showPlayerIds)
     end
 
-    if canShowSection(playerId, 'groups') then
-        payload.groups = {}
+    if Groups and canShowSection(playerId, 'groups') then
+        payload.groups = Groups.getCounts()
     end
 
     if canShowSection(playerId, 'statusIndicators') then

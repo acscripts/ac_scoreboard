@@ -16,6 +16,19 @@ local function openScoreboard()
 
     local data = lib.callback.await('ac_scoreboard:getServerData', false)
 
+    if data.groups then
+        local groups = {}
+
+        for index, group in ipairs(Config.groups) do
+            groups[index] = {
+                label = group.label,
+                count = data.groups[index],
+            }
+        end
+
+        data.groups = groups
+    end
+
     if data.footer then
         data.footer.serverId = cache.serverId
     end

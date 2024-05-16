@@ -5,7 +5,7 @@ type Footer = {
 };
 
 type Group = {
-  name: string;
+  label: string;
   count: number;
 };
 

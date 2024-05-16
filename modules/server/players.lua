@@ -37,9 +37,6 @@ local function getPlayers(playerNames, playerIds)
         index += 1
     end
 
-    -- local payload = msgpack.pack_args(players)
-    -- print('size', #payload)
-
     return players
 end
 

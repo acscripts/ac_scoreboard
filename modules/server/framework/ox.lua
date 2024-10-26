@@ -1,4 +1,4 @@
-if not lib.checkDependency('ox_core', '0.25.0', true) then return end
+if not lib.checkDependency('ox_core', '1.1.3', true) then return end
 
 local Config = require 'config'
 

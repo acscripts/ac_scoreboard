@@ -1,8 +1,9 @@
+import { mount } from 'svelte';
 import './index.pcss';
 import App from './App.svelte';
 import { isEnvBrowser } from '$utils/misc';
 
-const app = new App({
+const app = mount(App, {
   target: document.getElementById('app')!,
 });
 

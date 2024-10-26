@@ -19,7 +19,7 @@
   <div class="flex select-none flex-wrap items-center justify-center gap-2">
     <Tooltip.Root openDelay={250} closeOnPointerDown={false}>
       <Tooltip.Trigger>
-        <button on:click={copyServerId} class="flex h-6 items-center gap-2 rounded-md bg-slate-600 px-2">
+        <button onclick={copyServerId} class="flex h-6 items-center gap-2 rounded-md bg-slate-600 px-2">
           <Icon icon="mingcute:user-2-fill" class="h-4 w-4" />
           {$data.footer.serverId}
         </button>

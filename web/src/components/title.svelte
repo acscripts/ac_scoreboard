@@ -13,7 +13,7 @@
       style="color-scheme:dark;"
       src={$config.title.logo ?? 'defaultTitleLogo'}
       alt="Server logo"
-      on:error={handleMissingImage}
+      onerror={handleMissingImage}
     />
   {/if}
   {#if $config.title.text !== false}

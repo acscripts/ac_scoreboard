@@ -65,7 +65,7 @@
   ]);
   */
 
-  let isOpened = false;
+  let isOpened = $state(false);
 
   if (isEnvBrowser()) {
     isOpened = true;
@@ -108,7 +108,7 @@
   <div class="absolute flex w-full justify-center">
     <button
       class="m-2 rounded-md bg-slate-800 px-4 py-2"
-      on:click={() => debugData([{ action: 'setVisible', data: true }], 0)}>Show</button
+      onclick={() => debugData([{ action: 'setVisible', data: true }], 0)}>Show</button
     >
   </div>
 {/if}

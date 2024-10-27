@@ -8,7 +8,7 @@
 {#if $data.statusIndicators}
   <div class="flex select-none flex-wrap items-center justify-center gap-2">
     {#each $data.statusIndicators as item}
-      <Tooltip.Root openDelay={250} closeOnPointerDown={false}>
+      <Tooltip.Root openDelay={250} closeOnPointerDown={false} disableHoverableContent={true}>
         <Tooltip.Trigger>
           <Icon icon={item.icon} class={cn('h-6 w-6', item.isActive ? 'text-green-500' : 'text-red-500')} />
         </Tooltip.Trigger>

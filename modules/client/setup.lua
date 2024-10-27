@@ -1,7 +1,6 @@
 local Config = require 'config'
 
 
-
 ---@return table
 local function getUiLocales()
     local locales = lib.getLocales()
@@ -17,7 +16,6 @@ local function getUiLocales()
 
     return uiLocales
 end
-
 
 
 RegisterNUICallback('ready', function(_, cb)
@@ -40,7 +38,6 @@ AddEventHandler('ox_lib:setLocale', function()
         data = getUiLocales(),
     })
 end)
-
 
 
 RegisterNUICallback('copyServerId', function(_, cb)

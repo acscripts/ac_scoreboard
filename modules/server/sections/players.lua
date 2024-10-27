@@ -1,5 +1,12 @@
 local Players = {}
 
+CreateThread(function()
+    for _, playerId in ipairs(GetPlayers()) do
+        Players[playerId] = GetPlayerName(playerId)
+    end
+end)
+
+
 AddEventHandler('playerJoining', function()
     local playerId = tostring(source)
     Players[playerId] = GetPlayerName(playerId)
@@ -9,11 +16,6 @@ AddEventHandler('playerDropped', function()
     Players[tostring(source)] = nil
 end)
 
-CreateThread(function()
-    for _, playerId in ipairs(GetPlayers()) do
-        Players[playerId] = GetPlayerName(playerId)
-    end
-end)
 
 ---@param playerNames boolean
 ---@param playerIds boolean
@@ -39,6 +41,7 @@ local function getPlayers(playerNames, playerIds)
 
     return players
 end
+
 
 return {
     getPlayers = getPlayers,

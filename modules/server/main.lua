@@ -4,7 +4,6 @@ local Utils = require 'modules.server.utils'
 lib.versionCheck('acscripts/ac_scoreboard')
 
 
-
 local visibleSections = Config.visibleSections
 local Players = nil
 local Groups = nil
@@ -12,33 +11,36 @@ local Indicators = nil
 
 SetTimeout(0, function()
     if visibleSections.players then
-        Players = require 'modules.server.players'
+        Players = require 'modules.server.sections.players'
     end
 
     if visibleSections.groups then
         if Utils.hasExport('ox_core.GetPlayer') then
-            Groups = require 'modules.server.framework.ox'
+            Groups = require 'modules.server.sections.groups.ox'
         elseif Utils.hasExport('es_extended.getSharedObject') then
-            Groups = require 'modules.server.framework.esx'
+            Groups = require 'modules.server.sections.groups.esx'
         elseif Utils.hasExport('qb-core.GetCoreObject') then
-            Groups = require 'modules.server.framework.qb'
+            Groups = require 'modules.server.sections.groups.qb'
         end
     end
 
     if visibleSections.statusIndicators then
-        Indicators = require 'modules.server.indicators'
+        Indicators = require 'modules.server.sections.indicators'
     end
 end)
 
 
----@param playerId string
+---@param playerId number
 ---@param section string
 ---@return boolean
 local function canShowSection(playerId, section)
     local state = visibleSections[section]
-    return state == true or state == 'limited' and IsPlayerAceAllowed(playerId, ('scoreboard.show.%s'):format(section))
+    return state == true or state == 'limited' and IsPlayerAceAllowed(tostring(playerId), ('scoreboard.show.%s'):format(section))
 end
 
+
+---@param playerId number
+---@return table
 lib.callback.register('ac_scoreboard:getServerData', function(playerId)
     local payload = {}
 

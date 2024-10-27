@@ -2,7 +2,6 @@ local Config = require 'config'
 local isOpened = false
 
 
-
 local function openScoreboard()
     if isOpened then
         isOpened = false
@@ -84,14 +83,12 @@ RegisterNUICallback('close', function(_, cb)
 end)
 
 
-
 TriggerEvent('chat:addSuggestion', ('/%s'):format(Config.commandName), locale('command_open'))
 RegisterCommand(Config.commandName, openScoreboard, false)
 
 if Config.commandKey then
 	RegisterKeyMapping(Config.commandName, locale('keymap_open'), 'keyboard', Config.commandKey)
 end
-
 
 
 AddEventHandler('onResourceStop', function(resource)

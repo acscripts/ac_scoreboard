@@ -29,6 +29,20 @@ local function openScoreboard()
         data.groups = groups
     end
 
+    if data.statusIndicators then
+        local indicators = {}
+
+        for index, indicator in ipairs(Config.statusIndicators) do
+            indicators[index] = {
+                label = indicator.label,
+                icon = indicator.icon,
+                state = data.statusIndicators[index],
+            }
+        end
+
+        data.statusIndicators = indicators
+    end
+
     if data.footer then
         data.footer.serverId = cache.serverId
     end

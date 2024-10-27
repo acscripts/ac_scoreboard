@@ -10,7 +10,7 @@
     {#each $data.statusIndicators as item}
       <Tooltip.Root openDelay={250} closeOnPointerDown={false} disableHoverableContent={true}>
         <Tooltip.Trigger>
-          <Icon icon={item.icon} class={cn('h-6 w-6', item.isActive ? 'text-green-500' : 'text-red-500')} />
+          <Icon icon={item.icon} class={cn('h-6 w-6', item.state ? 'text-green-500' : 'text-red-500')} />
         </Tooltip.Trigger>
         <Tooltip.Content>
           <p>{item.label}</p>

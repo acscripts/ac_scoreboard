@@ -8,6 +8,7 @@ lib.versionCheck('acscripts/ac_scoreboard')
 local visibleSections = Config.visibleSections
 local Players = nil
 local Groups = nil
+local Indicators = nil
 
 SetTimeout(0, function()
     if visibleSections.players then
@@ -23,8 +24,11 @@ SetTimeout(0, function()
             Groups = require 'modules.server.framework.qb'
         end
     end
-end)
 
+    if visibleSections.statusIndicators then
+        Indicators = require 'modules.server.indicators'
+    end
+end)
 
 
 ---@param playerId string
@@ -48,8 +52,8 @@ lib.callback.register('ac_scoreboard:getServerData', function(playerId)
         payload.groups = Groups.getCounts()
     end
 
-    if canShowSection(playerId, 'statusIndicators') then
-        payload.statusIndicators = {}
+    if Indicators and canShowSection(playerId, 'statusIndicators') then
+        payload.statusIndicators = Indicators.getStates()
     end
 
     if canShowSection(playerId, 'footer') then

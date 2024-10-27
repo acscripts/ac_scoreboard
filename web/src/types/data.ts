@@ -17,7 +17,7 @@ type Player = {
 type StatusIndicator = {
   label: string;
   icon: string;
-  isActive: boolean;
+  state: boolean;
 };
 
 type SheetData = {

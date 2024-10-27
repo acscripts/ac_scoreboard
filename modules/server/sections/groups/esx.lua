@@ -3,17 +3,28 @@ local Players = {}
 local Groups = {}
 
 
--- ESX apparently doesn't have built-in duty system :joy:
--- In case you have one, just remove this line and change the code below to suit your needs (don't ask for support)
-Config.includeOffDuty = true
-
-
+---@param groupName string
 local function addMember(groupName)
     Groups[groupName] = (Groups[groupName] or 0) + 1
 end
 
+---@param groupName string
 local function removeMember(groupName)
     Groups[groupName] = (Groups[groupName] or 1) - 1
+end
+
+---@param job string
+---@return string, boolean
+local function deretardifyEsxDutySystem(job)
+    local groupName = job
+    local onDuty = true
+
+    if job:sub(1, 4) == 'off_' then
+        groupName = job:sub(5)
+        onDuty = false
+    end
+
+    return groupName, onDuty
 end
 
 
@@ -22,49 +33,56 @@ CreateThread(function()
 
     for _, player in ipairs(ESX.GetExtendedPlayers()) do
         local group = player.job
+        local groupName, onDuty = deretardifyEsxDutySystem(group.name)
+
         Players[player.source] = {
-            name = group.name,
-            onDuty = group.onDuty,
+            name = groupName,
+            onDuty = onDuty,
         }
 
-        if Config.includeOffDuty or group.onDuty then
-            addMember(group.name)
+        if Config.includeOffDuty or onDuty then
+            addMember(groupName)
         end
     end
 end)
 
 
+---@param player table
 AddEventHandler('esx:playerLoaded', function(_, player)
     local group = player.job
+    local groupName, onDuty = deretardifyEsxDutySystem(group.name)
 
     Players[player.source] = {
-        name = group.name,
-        onDuty = group.onDuty,
+        name = groupName,
+        onDuty = onDuty,
     }
 
-    if Config.includeOffDuty or group.onDuty then
-        addMember(group.name)
+    if Config.includeOffDuty or onDuty then
+        addMember(groupName)
     end
 end)
 
+---@param playerId number
+---@param group table
 AddEventHandler('esx:setJob', function(playerId, group)
     local oldGroup = Players[playerId]
+    local groupName, onDuty = deretardifyEsxDutySystem(group.name)
 
     Players[playerId] = {
-        name = group.name,
-        onDuty = group.onDuty,
+        name = groupName,
+        onDuty = onDuty,
     }
 
     if Config.includeOffDuty then
         removeMember(oldGroup.name)
-        addMember(group.name)
+        addMember(groupName)
     else
         if oldGroup.onDuty then
             removeMember(oldGroup.name)
         end
 
-        if group.onDuty then
-            addMember(group.name)
+        if onDuty then
+            addMember(groupName)
         end
     end
 end)
@@ -73,8 +91,10 @@ AddEventHandler('playerDropped', function()
 	local group = Players[source]
     if not group then return end
 
-    if Config.includeOffDuty or group.onDuty then
-        removeMember(group.name)
+    local groupName, onDuty = deretardifyEsxDutySystem(group.name)
+
+    if Config.includeOffDuty or onDuty then
+        removeMember(groupName)
     end
 
 	Players[source] = nil

@@ -87,8 +87,10 @@ AddEventHandler('esx:setJob', function(playerId, group)
     end
 end)
 
-AddEventHandler('playerDropped', function()
-	local group = Players[source]
+
+---@param playerId number
+local function removePlayer(playerId)
+	local group = Players[playerId]
     if not group then return end
 
     local groupName, onDuty = deretardifyEsxDutySystem(group.name)
@@ -97,7 +99,12 @@ AddEventHandler('playerDropped', function()
         removeMember(groupName)
     end
 
-	Players[source] = nil
+	Players[playerId] = nil
+end
+
+AddEventHandler('esx:playerLogout', removePlayer)
+AddEventHandler('playerDropped', function()
+	removePlayer(source)
 end)
 
 

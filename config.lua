@@ -45,6 +45,9 @@ return {
     -- Default keybind for the '/scoreboard' command
     commandKey = 'DELETE',
 
+    -- Whether to include off-duty players in group count
+    includeOffDuty = false,
+
     -- Group list shown in the scoreboard
     groups = {
         {

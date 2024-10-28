@@ -21,6 +21,8 @@ SetTimeout(0, function()
             Groups = require 'modules.server.sections.groups.esx'
         elseif Utils.hasExport('qb-core.GetCoreObject') then
             Groups = require 'modules.server.sections.groups.qb'
+        else
+            lib.print.warn('No compatible framework found. Group section was automatically disabled.')
         end
     end
 

@@ -53,7 +53,8 @@ local function openScoreboard()
 
     SetNuiFocus(true, true)
     SetNuiFocusKeepInput(true)
-    SetCursorLocation(0.8, 0.5)
+    SetCursorLocation(Config.settings.side == 'right' and 0.8 or 0.2, 0.5)
+
     SendNUIMessage({
         action = 'setVisible',
         data = true,

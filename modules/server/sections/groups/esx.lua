@@ -2,6 +2,8 @@ local Config = require 'config'
 local Players = {}
 local Groups = {}
 
+local hasDutySystem = lib.checkDependency('es_extended', '1.11.0', false)
+
 
 ---@param groupName string
 local function addMember(groupName)
@@ -13,14 +15,18 @@ local function removeMember(groupName)
     Groups[groupName] = (Groups[groupName] or 1) - 1
 end
 
----@param job string
+---@param group tabůe
 ---@return string, boolean
-local function deretardifyEsxDutySystem(job)
-    local groupName = job
+local function getGroupData(group)
+    if hasDutySystem then
+        return group.name, group.onDuty
+    end
+
+    local groupName = group.name
     local onDuty = true
 
-    if job:sub(1, 4) == 'off_' then
-        groupName = job:sub(5)
+    if groupName:sub(1, 4) == 'off_' then
+        groupName = groupName:sub(5)
         onDuty = false
     end
 
@@ -32,8 +38,7 @@ CreateThread(function()
     local ESX = exports.es_extended:getSharedObject()
 
     for _, player in ipairs(ESX.GetExtendedPlayers()) do
-        local group = player.job
-        local groupName, onDuty = deretardifyEsxDutySystem(group.name)
+        local groupName, onDuty = getGroupData(player.job)
 
         Players[player.source] = {
             name = groupName,
@@ -49,8 +54,7 @@ end)
 
 ---@param player table
 AddEventHandler('esx:playerLoaded', function(_, player)
-    local group = player.job
-    local groupName, onDuty = deretardifyEsxDutySystem(group.name)
+    local groupName, onDuty = getGroupData(player.job)
 
     Players[player.source] = {
         name = groupName,
@@ -66,7 +70,7 @@ end)
 ---@param group table
 AddEventHandler('esx:setJob', function(playerId, group)
     local oldGroup = Players[playerId]
-    local groupName, onDuty = deretardifyEsxDutySystem(group.name)
+    local groupName, onDuty = getGroupData(group)
 
     Players[playerId] = {
         name = groupName,
@@ -93,7 +97,7 @@ local function removePlayer(playerId)
 	local group = Players[playerId]
     if not group then return end
 
-    local groupName, onDuty = deretardifyEsxDutySystem(group.name)
+    local groupName, onDuty = getGroupData(group)
 
     if Config.includeOffDuty or onDuty then
         removeMember(groupName)

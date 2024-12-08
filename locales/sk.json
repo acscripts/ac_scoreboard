@@ -1,0 +1,11 @@
+{
+  "ui": {
+    "groups": "Skupiny",
+    "players": "Hráči",
+    "copy_server_id": "Skopírovať svoje server ID",
+    "server_id_copied": "Server ID skopírované",
+    "anonymous_player": "Anonymný hráč"
+  },
+  "command_open": "Otvorí rozhranie scoreboardu",
+  "keymap_open": "Otvoriť scoreboard"
+}

@@ -1,0 +1,11 @@
+{
+  "ui": {
+    "groups": "Groups",
+    "players": "Players",
+    "copy_server_id": "Copy your server ID",
+    "server_id_copied": "Server ID copied",
+    "anonymous_player": "Anonymous player"
+  },
+  "command_open": "Opens the scoreboard UI",
+  "keymap_open": "Open scoreboard UI"
+}

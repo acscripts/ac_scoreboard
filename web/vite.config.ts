@@ -1,11 +1,21 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { svelte } from '@sveltejs/vite-plugin-svelte';
+import * as path from 'path';
 
 export default defineConfig({
-  plugins: [react()],
-  base: "./",
+  plugins: [svelte()],
+  base: './',
+  server: {
+    port: 3000,
+  },
   build: {
-    outDir: "build",
-    target: "esnext",
-  }
+    outDir: 'build',
+  },
+  resolve: {
+    alias: {
+      $utils: path.resolve('./src/utils'),
+      $types: path.resolve('./src/types'),
+      $store: path.resolve('./src/store'),
+    },
+  },
 });

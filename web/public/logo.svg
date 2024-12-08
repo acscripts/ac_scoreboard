@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+    <style>
+        .logo {
+            fill: none;
+            stroke: #111;
+            stroke-width: 132.1917;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .logo {
+                stroke: #eee;
+            }
+        }
+    </style>
+
+    <path class="logo" d="M772.5 768 512 507.5 251.5 768M850.4 381.8C656 214.1 368 214.1 173.6 381.8" />
+</svg>

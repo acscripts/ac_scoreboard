@@ -1,59 +1,51 @@
 name: Create new release
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'v*.*.*'
 
 jobs:
-  new-release:
-    name: Build and create new release
+  release:
     runs-on: ubuntu-latest
-
     steps:
       - name: Get latest code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          version: latest
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          cache: 'pnpm'
-          cache-dependency-path: 'web/pnpm-lock.yaml'
+          bun-version: latest
 
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
         working-directory: web
 
       - name: Run build script
-        run: pnpm build
+        run: bun run build
         working-directory: web
 
       - name: Update tag
-        uses: EndBug/latest-tag@v1.5.0
+        uses: EndBug/latest-tag@v1
         with:
           ref: ${{ github.ref_name }}
 
       - name: Install zip
         run: sudo apt install zip
 
-      - name: Bundle built files
+      - name: Bundle files
         run: |
           mkdir -p ./temp/ac_scoreboard
+          mkdir -p ./temp/ac_scoreboard/web/
           cp ./{LICENSE,README.md,fxmanifest.lua,config.lua} ./temp/ac_scoreboard
-          cp -r ./{resource,locales} ./temp/ac_scoreboard
-          mkdir ./temp/ac_scoreboard/web/
+          cp -r ./{locales,modules,resource} ./temp/ac_scoreboard
           cp -r ./web/build ./temp/ac_scoreboard/web/
           cd ./temp && zip -r ../ac_scoreboard.zip ./ac_scoreboard
 
       - name: Create release
-        uses: marvinpinto/action-automatic-releases@v1.2.1
+        uses: softprops/action-gh-release@v2
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}
           prerelease: false
           files: ac_scoreboard.zip

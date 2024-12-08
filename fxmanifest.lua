@@ -1,31 +1,35 @@
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
+use_experimental_fxv2_oal 'yes'
 
 name 'ac_scoreboard'
-author 'ANTOND.#8507'
-version '1.0.4'
+author 'AC Scripts'
+version '2.0.0'
 description 'A framework-standalone scoreboard UI for FiveM.'
-repository 'https://github.com/antond15/ac_scoreboard'
+repository 'https://github.com/acscripts/ac_scoreboard'
 
 
-shared_script 'config.lua'
+shared_script '@ox_lib/init.lua'
+server_script 'resource/server.lua'
+client_script 'resource/client.lua'
 
-server_scripts {
-  'resource/server/server.lua',
-  'resource/server/framework.lua',
-  'resource/server/version.lua'
-}
-
-client_scripts {
-  'resource/client/locales.lua',
-  'resource/client/client.lua'
-}
 
 ui_page 'web/build/index.html'
 
 files {
   'web/build/index.html',
   'web/build/**/*',
-  'locales/*.lua'
+  'config.lua',
+  'modules/client/*.lua',
+  'locales/*.json',
+}
+
+
+ox_libs {
+  'locale',
+}
+
+dependencies {
+  'ox_lib',
 }

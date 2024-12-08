@@ -1,47 +1,77 @@
----------------------------------------------------------------------------------------------
--- More detailed description of each config option can be found in 'docs/config.md' file.
----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------
+-- Visit https://docs.acscripts.dev/scoreboard for documentation
+-----------------------------------------------------------------
 
-ac = {
-	-- Language for the UI
-	locale = 'en',
+return {
+    settings = {
+        title = {
+            text = 'AC Scoreboard',
+            logo = 'https://cfx-nui-ac_scoreboard/web/build/logo.svg',
+        },
 
-	-- Whether to check for newer resource version and notify in server console.
-	versionCheck = true,
+        side = 'right',
 
-	-- Server name shown in the scoreboard header.
-	serverName = 'AC Scoreboard',
+        showOverlay = false,
 
-	-- Command name to open the scoreboard UI.
-	commandName = 'scoreboard',
+        closeOnEscape = true,
 
-	-- Default keybind for the '/scoreboard' command.
-	commandKey = 'DELETE',
+        closeOnOutsideClick = true,
 
-	-- Which parts of the scoreboard should be visible (both, groups, players).
-	visibleParts = 'both',
+        uppercaseNames = false,
 
-	-- On which side of the screen the scoreboard should be (left, right).
-	drawerSide = 'right',
+        highlightEmptyGroups = true,
 
-	-- Group list shown in the scoreboard.
-	groupList = {
-		{
-			label = 'Police',
-			groups = {'police', 'sheriff'}
-		},
-		{
-			label = 'EMS',
-			groups = {'ambulance'},
-			separator = true
-		},
-		{
-			label = 'Taxi',
-			groups = {'taxi'}
-		},
-		{
-			label = 'Mechanic',
-			groups = {'mechanic', 'lsc', 'bennys'}
-		}
-	}
+        compactPlayers = false,
+
+        compactGroups = false,
+
+        playerColumns = 1,
+
+        groupColumns = 1,
+    },
+
+    visibleSections = {
+        groups = true,
+        players = true,
+        playerNames = true,
+        playerIds = true,
+        statusIndicators = true,
+        footer = true,
+    },
+
+    -- Command name for opening the scoreboard
+    commandName = 'scoreboard',
+
+    -- Default keybind for the '/scoreboard' command
+    commandKey = 'DELETE',
+
+    -- Whether to include off-duty players in group count
+    includeOffDuty = false,
+
+    -- Group list shown in the scoreboard
+    groups = {
+        {
+            label = 'Police',
+            groups = {'police', 'sheriff'},
+        },
+        {
+            label = 'EMS',
+            groups = {'ambulance'},
+        },
+        {
+            label = 'Mechanics',
+            groups = {'lsc', 'bennys', 'hayes'},
+        },
+        {
+            label = 'Taxi',
+            groups = {'taxi'},
+        },
+    },
+
+    -- Status indicators shown in the scoreboard
+    statusIndicators = {
+        { id = 'house_robbery', label = 'House robbery', icon = 'mdi:house', defaultState = true },
+        { id = 'store_robbery', label = 'Store robbery', icon = 'mdi:store', defaultState = false },
+        { id = 'bank_robbery', label = 'Bank robbery', icon = 'mdi:bank' },
+    },
 }

@@ -18,53 +18,6 @@
   import StatusIndicators from './components/status-indicators.svelte';
   import Footer from './components/footer.svelte';
 
-  /*
-  debugData<SheetConfig>([
-    {
-      action: 'setConfig',
-      data: {
-        title: {
-          text: 'Hypen RP',
-          logo: 'https://static.hypen.cz/images/web/hypen-logo.svg',
-        },
-        side: 'right',
-        showOverlay: false,
-        closeOnEscape: true,
-        closeOnOutsideClick: true,
-        uppercaseNames: false,
-        compactRows: false,
-        playerColumns: 1,
-        groupColumns: 1,
-
-        // alternative values
-        // side: 'left',
-        // showOverlay: true,
-        // closeOnEscape: false,
-        // closeOnOutsideClick: false,
-        // uppercaseNames: true,
-        // compactRows: true,
-        // playerColumns: 2,
-        // groupColumns: 2,
-      },
-    },
-  ]);
-  */
-
-  /*
-  debugData<Locales>([
-    {
-      action: 'setLocales',
-      data: {
-        groups: 'Skupiny',
-        players: 'Hráči',
-        copy_server_id: 'Zkopírovat své server ID',
-        server_id_copied: 'Server ID zkopírováno',
-        anonymous_player: 'Anonymní hráč',
-      },
-    },
-  ]);
-  */
-
   let isOpened = $state(false);
 
   if (isEnvBrowser()) {

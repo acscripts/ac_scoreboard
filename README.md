@@ -2,12 +2,14 @@
 ![](https://img.shields.io/github/v/release/acscripts/ac_scoreboard?logo=github)
 
 ## Introduction
-**AC Scoreboard** is the ultimate standalone scoreboard solution for your server.
+**AC Scoreboard** is the ultimate scoreboard solution for your server.
 
-You can use any supported framework to enable additional features such as group list.  
+Ditch the unpleasant default scoreboard that comes with your framework and give your players something nice, clear and useful.
+
+This is a new, completely rewritten version of the very popular scoreboard that you have enjoyed using since 2022. While keeping the same iconic layout, you can look forward to new features such as status indicators or ACE permissions.
+
+You can use one of the supported framework to enable additional features such as group list.  
 Supported frameworks are [ox_core](https://github.com/overextended/ox_core), [qbx_core](https://github.com/Qbox-project/qbx_core), [qb-core](https://github.com/qbcore-framework/qb-core) and [es_extended](https://github.com/esx-framework/esx_core).
-
-Report bugs using [GitHub issues](https://github.com/acscripts/ac_scoreboard/issues). Use the official [Discord server](https://discord.acscripts.dev) for support.
 
 ## Features
 - Customizable title (server name and logo)
@@ -16,7 +18,7 @@ Report bugs using [GitHub issues](https://github.com/acscripts/ac_scoreboard/iss
 - Status indicators that can be used for anything (e.g. if players can rob stores)
 - Select on which side of the screen is the scoreboard
 - Customizable UI settings (background blur, close behavior)
-- Choose what parts should be visible
+- Choose what parts should be visible, based on ACE permissions
 - Total player count and copyable server ID
 
 ## Documentation

@@ -1,5 +1,4 @@
 local Config = require 'config'
-local Utils = require 'modules.server.utils'
 
 lib.versionCheck('acscripts/ac_scoreboard')
 
@@ -15,11 +14,11 @@ SetTimeout(0, function()
     end
 
     if visibleSections.groups then
-        if Utils.hasExport('ox_core.GetPlayer') then
+        if GetResourceState('ox_core') == 'started' then
             Groups = require 'modules.server.sections.groups.ox'
-        elseif Utils.hasExport('es_extended.getSharedObject') then
+        elseif GetResourceState('es_extended') == 'started' then
             Groups = require 'modules.server.sections.groups.esx'
-        elseif Utils.hasExport('qb-core.GetCoreObject') then
+        elseif GetResourceState('qb-core') == 'started' then
             Groups = require 'modules.server.sections.groups.qb'
         else
             lib.print.warn('No compatible framework found. Group section was automatically disabled.')

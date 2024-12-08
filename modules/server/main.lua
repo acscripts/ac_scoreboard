@@ -18,6 +18,8 @@ SetTimeout(0, function()
             Groups = require 'modules.server.sections.groups.ox'
         elseif GetResourceState('es_extended') == 'started' then
             Groups = require 'modules.server.sections.groups.esx'
+        elseif GetResourceState('qbx_core') == 'started' then
+            Groups = require 'modules.server.sections.groups.qbx'
         elseif GetResourceState('qb-core') == 'started' then
             Groups = require 'modules.server.sections.groups.qb'
         else

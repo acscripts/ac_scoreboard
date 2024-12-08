@@ -15,7 +15,7 @@ local function removeMember(groupName)
     Groups[groupName] = (Groups[groupName] or 1) - 1
 end
 
----@param group tabůe
+---@param group table
 ---@return string, boolean
 local function getGroupData(group)
     if hasDutySystem then

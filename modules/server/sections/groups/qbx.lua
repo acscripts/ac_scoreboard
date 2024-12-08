@@ -57,6 +57,8 @@ end)
 ---@param group table
 AddEventHandler('QBCore:Server:OnJobUpdate', function(playerId, group)
     local oldGroup = Players[playerId]
+    if not oldGroup then return end
+
     local groupName, onDuty = getGroupData(group)
 
     Players[playerId] = {
@@ -82,6 +84,7 @@ end)
 ---@param onDuty boolean
 AddEventHandler('QBCore:Server:SetDuty', function(playerId, onDuty)
     local oldGroup = Players[playerId]
+    if not oldGroup then return end
 
     if not Config.includeOffDuty then
         if not onDuty and oldGroup.onDuty then

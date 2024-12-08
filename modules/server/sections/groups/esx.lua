@@ -70,6 +70,8 @@ end)
 ---@param group table
 AddEventHandler('esx:setJob', function(playerId, group)
     local oldGroup = Players[playerId]
+    if not oldGroup then return end
+
     local groupName, onDuty = getGroupData(group)
 
     Players[playerId] = {

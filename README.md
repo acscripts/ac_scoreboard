@@ -23,11 +23,11 @@ Report bugs using [GitHub issues](https://github.com/acscripts/ac_scoreboard/iss
 ➡️ [docs.acscripts.dev/scoreboard](https://docs.acscripts.dev/scoreboard) ⬅️
 
 ## Showcase
-<a href="https://youtu.be/M7YQ5vicwKo">
-    <img src="https://i3.ytimg.com/vi/M7YQ5vicwKo/maxresdefault.jpg" alt="YouTube Showcase" width="600">
+<a href="https://youtu.be/D_S4OmYOKJA">
+    <img src="https://i3.ytimg.com/vi/D_S4OmYOKJA/maxresdefault.jpg" alt="YouTube Showcase" width="600">
 </a>
 
-[youtu.be/M7YQ5vicwKo](https://youtu.be/M7YQ5vicwKo)
+[youtu.be/D_S4OmYOKJA](https://youtu.be/D_S4OmYOKJA)
 
 ---
 

@@ -2,16 +2,10 @@
     <style>
         .logo {
             fill: none;
-            stroke: #111;
+            stroke: #eee;
             stroke-width: 132.1917;
             stroke-linecap: round;
             stroke-linejoin: round;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .logo {
-                stroke: #eee;
-            }
         }
     </style>
 

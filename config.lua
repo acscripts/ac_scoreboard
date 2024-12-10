@@ -70,8 +70,27 @@ return {
 
     -- Status indicators shown in the scoreboard
     statusIndicators = {
-        { id = 'house_robbery', label = 'House robbery', icon = 'mdi:house', defaultState = true },
-        { id = 'store_robbery', label = 'Store robbery', icon = 'mdi:store', defaultState = false },
-        { id = 'bank_robbery', label = 'Bank robbery', icon = 'mdi:bank' },
+        {
+            id = 'house_robbery',
+            label = 'House robbery',
+            icon = 'mdi:house',
+            defaultState = true,
+        },
+        {
+            id = 'store_robbery',
+            label = 'Store robbery',
+            icon = 'mdi:store',
+            defaultState = false,
+        },
+        {
+            id = 'bank_robbery',
+            label = 'Bank robbery',
+            icon = 'mdi:bank',
+            groupTrigger = {
+                groups = {'police', 'sheriff'},
+                minimumCount = 12,
+                includeOffDuty = true,
+            },
+        },
     },
 }

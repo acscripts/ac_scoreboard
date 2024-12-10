@@ -81,7 +81,7 @@ local function getStates()
             local trigger = data.groupTrigger
             local count = Groups.getGroupsCount(trigger.groups, trigger.includeOffDuty)
 
-            if count >= trigger.minimumCount then
+            if count >= (trigger.minimumCount or 0) then
                 state = true
             end
         end

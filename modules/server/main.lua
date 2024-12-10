@@ -1,4 +1,5 @@
 local Config = require 'config'
+local Utils = require 'modules.server.utils'
 
 lib.versionCheck('acscripts/ac_scoreboard')
 
@@ -14,14 +15,10 @@ SetTimeout(0, function()
     end
 
     if visibleSections.groups then
-        if GetResourceState('ox_core') == 'started' then
-            Groups = require 'modules.server.sections.groups.ox'
-        elseif GetResourceState('es_extended') == 'started' then
-            Groups = require 'modules.server.sections.groups.esx'
-        elseif GetResourceState('qbx_core') == 'started' then
-            Groups = require 'modules.server.sections.groups.qbx'
-        elseif GetResourceState('qb-core') == 'started' then
-            Groups = require 'modules.server.sections.groups.qb'
+        local framework = Utils.getFramework()
+
+        if framework then
+            Groups = require(('modules.server.sections.groups.%s'):format(framework))
         else
             lib.print.warn('No compatible framework found. Group section was automatically disabled.')
         end

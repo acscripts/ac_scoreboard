@@ -9,9 +9,10 @@ local Config = require 'config'
 ---@return number
 local function getGroupsCount(groups, includeOffDuty)
     local count = 0
+    local dutyKey = includeOffDuty and 'count' or 'activeCount'
 
     for _, groupName in ipairs(groups) do
-        count += GlobalState[('%s:%s'):format(groupName, includeOffDuty and 'count' or 'activeCount')] or 0
+        count += GlobalState[('%s:%s'):format(groupName, dutyKey)] or 0
     end
 
     return count

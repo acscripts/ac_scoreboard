@@ -121,9 +121,10 @@ end)
 ---@return number
 local function getGroupsCount(groups, includeOffDuty)
     local count = 0
+    local dutyKey = includeOffDuty and 'count' or 'activeCount'
 
     for _, groupName in ipairs(groups) do
-        count += Groups[groupName]?[includeOffDuty and 'count' or 'activeCount'] or 0
+        count += Groups[groupName]?[dutyKey] or 0
     end
 
     return count

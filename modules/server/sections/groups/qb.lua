@@ -4,13 +4,43 @@ local Groups = {}
 
 
 ---@param groupName string
-local function addMember(groupName)
-    Groups[groupName] = (Groups[groupName] or 0) + 1
+---@param onDuty boolean
+local function addMember(groupName, onDuty)
+    local group = Groups[groupName]
+
+    if not group then
+        Groups[groupName] = {
+            count = 1,
+            activeCount = onDuty and 1 or 0,
+        }
+        return
+    end
+
+    group.count += 1
+
+    if onDuty then
+        group.activeCount += 1
+    end
 end
 
 ---@param groupName string
-local function removeMember(groupName)
-    Groups[groupName] = (Groups[groupName] or 1) - 1
+---@param onDuty boolean
+local function removeMember(groupName, onDuty)
+    local group = Groups[groupName]
+
+    if not group then
+        Groups[groupName] = {
+            count = 0,
+            activeCount = 0,
+        }
+        return
+    end
+
+    group.count -= 1
+
+    if onDuty then
+        group.activeCount -= 1
+    end
 end
 
 --- To eliminate confusion between `onDuty` and `onduty`
@@ -33,9 +63,7 @@ CreateThread(function()
             onDuty = onDuty,
         }
 
-        if Config.includeOffDuty or onDuty then
-            addMember(groupName)
-        end
+        addMember(groupName, onDuty)
     end
 end)
 
@@ -50,9 +78,7 @@ AddEventHandler('QBCore:Server:PlayerLoaded', function(player)
         onDuty = onDuty,
     }
 
-    if Config.includeOffDuty or onDuty then
-        addMember(groupName)
-    end
+    addMember(groupName, onDuty)
 end)
 
 ---@param playerId number
@@ -68,18 +94,8 @@ AddEventHandler('QBCore:Server:OnJobUpdate', function(playerId, group)
         onDuty = onDuty,
     }
 
-    if Config.includeOffDuty then
-        removeMember(oldGroup.name)
-        addMember(groupName)
-    else
-        if oldGroup.onDuty then
-            removeMember(oldGroup.name)
-        end
-
-        if onDuty then
-            addMember(groupName)
-        end
-    end
+    removeMember(oldGroup.name, oldGroup.onDuty)
+    addMember(groupName, onDuty)
 end)
 
 
@@ -88,9 +104,7 @@ local function removePlayer(playerId)
 	local group = Players[playerId]
     if not group then return end
 
-    if Config.includeOffDuty or group.onDuty then
-        removeMember(group.name)
-    end
+    removeMember(group.name, group.onDuty)
 
 	Players[playerId] = nil
 end
@@ -101,17 +115,28 @@ AddEventHandler('playerDropped', function()
 end)
 
 
-local function getCounts()
+--- Get the total player count of the given group array
+---@param groups string[]
+---@param includeOffDuty boolean
+---@return number
+local function getGroupsCount(groups, includeOffDuty)
+    local count = 0
+
+    for _, groupName in ipairs(groups) do
+        count += Groups[groupName]?[includeOffDuty and 'count' or 'activeCount'] or 0
+    end
+
+    return count
+end
+
+--- Get the total player count of each entry in group section
+---@return number[]
+local function getAllGroupsCounts()
     local counts = {}
+    local includeOffDuty = Config.includeOffDuty
 
     for index, group in ipairs(Config.groups) do
-        local totalCount = 0
-
-        for _, groupName in ipairs(group.groups) do
-            totalCount += Groups[groupName] or 0
-        end
-
-        counts[index] = totalCount
+        counts[index] = getGroupsCount(group.groups, includeOffDuty)
     end
 
     return counts
@@ -119,5 +144,6 @@ end
 
 
 return {
-    getCounts = getCounts,
+    getAllGroupsCounts = getAllGroupsCounts,
+    getGroupsCount = getGroupsCount,
 }

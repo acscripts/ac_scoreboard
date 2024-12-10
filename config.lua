@@ -45,7 +45,7 @@ return {
     -- Default keybind for the '/scoreboard' command
     commandKey = 'DELETE',
 
-    -- Whether to include off-duty players in group count
+    -- Whether to include off-duty players in group count (if not defined in the group row itself)
     includeOffDuty = false,
 
     -- Group list shown in the scoreboard
@@ -53,14 +53,17 @@ return {
         {
             label = 'Police',
             groups = {'police', 'sheriff'},
+            includeOffDuty = false,
         },
         {
             label = 'EMS',
             groups = {'ambulance'},
+            includeOffDuty = false,
         },
         {
             label = 'Mechanics',
             groups = {'lsc', 'bennys', 'hayes'},
+            includeOffDuty = true,
         },
         {
             label = 'Taxi',

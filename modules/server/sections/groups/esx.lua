@@ -148,7 +148,7 @@ local function getAllGroupsCounts()
     local includeOffDuty = Config.includeOffDuty
 
     for index, group in ipairs(Config.groups) do
-        counts[index] = getGroupsCount(group.groups, includeOffDuty)
+        counts[index] = getGroupsCount(group.groups, group.includeOffDuty or group.includeOffDuty == nil and includeOffDuty)
     end
 
     return counts

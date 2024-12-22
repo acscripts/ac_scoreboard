@@ -22,6 +22,7 @@ local function openScoreboard()
             groups[index] = {
                 label = group.label,
                 count = data.groups[index],
+                icon = group.icon,
             }
         end
 

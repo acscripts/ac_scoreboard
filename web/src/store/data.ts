@@ -8,9 +8,9 @@ export default writable<SheetData>({
     maxPlayers: 100,
   },
   groups: [
-    { label: 'Police', count: 7 },
+    { label: 'Police', count: 7, icon: 'ic:round-local-police' },
     { label: 'EMS', count: 6 },
-    { label: 'Mechanics', count: 2 },
+    { label: 'Mechanics', count: 2, icon: 'mdi:wrench' },
     { label: 'Taxi', count: 0 },
     { label: 'Unemployed', count: 47 },
   ],

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Icon from '@iconify/svelte';
   import data from '$store/data';
   import config from '$store/config';
   import locales from '$store/locales';
@@ -17,7 +18,12 @@
             $config.compactGroups ? 'py-1' : 'py-2'
           )}
         >
-          <span class="truncate">{group.label}</span>
+          <div class="flex items-center gap-2 truncate">
+            {#if group.icon}
+              <Icon icon={group.icon} class="h-4 min-w-4" />
+            {/if}
+            <span class="truncate">{group.label}</span>
+          </div>
           <span
             class={cn(
               'min-w-9 flex-shrink-0 select-none rounded-md bg-slate-800 px-2 text-center',

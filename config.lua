@@ -54,6 +54,7 @@ return {
             label = 'Police',
             groups = {'police', 'sheriff'},
             includeOffDuty = false,
+            icon = 'ic:round-local-police',
         },
         {
             label = 'EMS',
@@ -64,6 +65,7 @@ return {
             label = 'Mechanics',
             groups = {'lsc', 'bennys', 'hayes'},
             includeOffDuty = true,
+            icon = 'mdi:wrench',
         },
         {
             label = 'Taxi',

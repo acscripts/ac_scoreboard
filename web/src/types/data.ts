@@ -7,6 +7,7 @@ type Footer = {
 type Group = {
   label: string;
   count: number;
+  icon?: string;
 };
 
 type Player = {

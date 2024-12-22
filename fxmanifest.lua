@@ -5,7 +5,7 @@ use_experimental_fxv2_oal 'yes'
 
 name 'ac_scoreboard'
 author 'AC Scripts'
-version '2.1.0'
+version '2.2.0'
 description 'A framework-standalone scoreboard UI for FiveM.'
 repository 'https://github.com/acscripts/ac_scoreboard'
 

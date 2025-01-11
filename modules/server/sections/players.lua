@@ -2,18 +2,17 @@ local Players = {}
 
 CreateThread(function()
     for _, playerId in ipairs(GetPlayers()) do
-        Players[playerId] = GetPlayerName(playerId)
+        Players[tonumber(playerId)] = GetPlayerName(playerId)
     end
 end)
 
 
 AddEventHandler('playerJoining', function()
-    local playerId = tostring(source)
-    Players[playerId] = GetPlayerName(playerId)
+    Players[source] = GetPlayerName(source)
 end)
 
 AddEventHandler('playerDropped', function()
-    Players[tostring(source)] = nil
+    Players[source] = nil
 end)
 
 

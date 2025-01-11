@@ -19,6 +19,8 @@
     copied: 'mdi:clipboard-check',
   };
 
+  // preload icons to prevent possible "flash" of empty icon space before it loads
+  // since it's visible only on hover, it's quite noticeable
   loadIcons([copyIcons.copy, copyIcons.copied]);
 </script>
 

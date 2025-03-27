@@ -32,6 +32,7 @@ return {
 
     visibleSections = {
         groups = true,
+        groupCount = true,
         players = true,
         playerNames = true,
         playerIds = true,

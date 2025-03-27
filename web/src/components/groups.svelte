@@ -24,12 +24,14 @@
             {/if}
             <span class="truncate">{group.label}</span>
           </div>
-          <span
-            class={cn(
-              'min-w-9 flex-shrink-0 select-none rounded-md bg-slate-800 px-2 text-center',
-              $config.highlightEmptyGroups && group.count === 0 && ' text-red-400'
-            )}>{group.count}</span
-          >
+          {#if group.count !== undefined}
+            <span
+              class={cn(
+                'min-w-9 flex-shrink-0 select-none rounded-md bg-slate-800 px-2 text-center',
+                $config.highlightEmptyGroups && group.count === 0 && ' text-red-400'
+              )}>{group.count}</span
+            >
+          {/if}
         </div>
       {/each}
     </div>

@@ -16,21 +16,21 @@ AddEventHandler('playerDropped', function()
 end)
 
 
----@param playerNames boolean
----@param playerIds boolean
+---@param showPlayerNames boolean
+---@param showPlayerIds boolean
 ---@return table[]
-local function getPlayers(playerNames, playerIds)
+local function getPlayers(showPlayerNames, showPlayerIds)
     local players = {}
     local index = 1
 
     for id, name in pairs(Players) do
         local data = {}
 
-        if playerNames then
+        if showPlayerNames then
             data.name = name
         end
 
-        if playerIds then
+        if showPlayerIds then
             data.id = id
         end
 

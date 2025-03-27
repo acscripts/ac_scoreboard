@@ -6,7 +6,7 @@ type Footer = {
 
 type Group = {
   label: string;
-  count: number;
+  count?: number;
   icon?: string;
 };
 

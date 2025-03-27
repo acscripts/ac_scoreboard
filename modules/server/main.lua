@@ -45,13 +45,11 @@ lib.callback.register('ac_scoreboard:getServerData', function(playerId)
     local payload = {}
 
     if Players and canShowSection(playerId, 'players') then
-        local showPlayerNames = canShowSection(playerId, 'playerNames')
-        local showPlayerIds = canShowSection(playerId, 'playerIds')
-        payload.players = Players.getPlayers(showPlayerNames, showPlayerIds)
+        payload.players = Players.getPlayers(canShowSection(playerId, 'playerNames'), canShowSection(playerId, 'playerIds'))
     end
 
     if Groups and canShowSection(playerId, 'groups') then
-        payload.groups = Groups.getAllGroupsCounts()
+        payload.groups = canShowSection(playerId, 'groupCount') and Groups.getAllGroupsCounts() or {}
     end
 
     if Indicators and canShowSection(playerId, 'statusIndicators') then

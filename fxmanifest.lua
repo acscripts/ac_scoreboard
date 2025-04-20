@@ -31,5 +31,6 @@ ox_libs {
 }
 
 dependencies {
+  '/native:0xAB7F7241',
   'ox_lib',
 }

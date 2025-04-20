@@ -30,6 +30,13 @@ SetTimeout(0, function()
 end)
 
 
+local sv_maxclients = GetConvarInt('sv_maxclients', 0)
+AddConvarChangeListener('sv_maxclients', function()
+    sv_maxclients = GetConvarInt('sv_maxclients', 0)
+end)
+
+
+
 ---@param playerId number
 ---@param section string
 ---@return boolean
@@ -58,7 +65,7 @@ lib.callback.register('ac_scoreboard:getServerData', function(playerId)
 
     if canShowSection(playerId, 'footer') then
         payload.footer = {
-            maxPlayers = GetConvarInt('sv_maxclients', 0), -- still waiting for the day when we can subscribe to convar changes
+            maxPlayers = sv_maxclients,
             playerCount = GetNumPlayerIndices(),
         }
     end

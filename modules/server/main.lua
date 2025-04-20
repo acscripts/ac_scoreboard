@@ -1,20 +1,17 @@
 local Config = require 'config'
 local Utils = require 'modules.server.utils'
+local VisibleSections = Config.visibleSections
 
-lib.versionCheck('acscripts/ac_scoreboard')
-
-
-local visibleSections = Config.visibleSections
 local Players = nil
 local Groups = nil
 local Indicators = nil
 
 SetTimeout(0, function()
-    if visibleSections.players then
+    if VisibleSections.players then
         Players = require 'modules.server.sections.players'
     end
 
-    if visibleSections.groups then
+    if VisibleSections.groups then
         local framework = Utils.getFramework()
 
         if framework then
@@ -24,7 +21,7 @@ SetTimeout(0, function()
         end
     end
 
-    if visibleSections.statusIndicators then
+    if VisibleSections.statusIndicators then
         Indicators = require 'modules.server.sections.indicators'
     end
 end)
@@ -41,7 +38,7 @@ end)
 ---@param section string
 ---@return boolean
 local function canShowSection(playerId, section)
-    local state = visibleSections[section]
+    local state = VisibleSections[section]
     return state == true or state == 'limited' and IsPlayerAceAllowed(tostring(playerId), ('scoreboard.show.%s'):format(section))
 end
 

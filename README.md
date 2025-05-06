@@ -9,7 +9,7 @@ Ditch the unpleasant default scoreboard that comes with your framework and give 
 This is a new, completely rewritten version of the very popular scoreboard that you have enjoyed using since 2022. While keeping the same iconic layout, you can look forward to new features such as status indicators or ACE permissions.
 
 You can use one of the supported framework to enable additional features such as group list.  
-Supported frameworks are [ox_core](https://github.com/overextended/ox_core), [qbx_core](https://github.com/Qbox-project/qbx_core), [qb-core](https://github.com/qbcore-framework/qb-core) and [es_extended](https://github.com/esx-framework/esx_core).
+Supported frameworks are [ox_core](https://github.com/communityox/ox_core), [qbx_core](https://github.com/Qbox-project/qbx_core), [qb-core](https://github.com/qbcore-framework/qb-core) and [es_extended](https://github.com/esx-framework/esx_core).
 
 ## Features
 - Customizable title (server name and logo)
@@ -20,6 +20,9 @@ Supported frameworks are [ox_core](https://github.com/overextended/ox_core), [qb
 - Customizable UI settings (background blur, close behavior)
 - Choose what parts should be visible, based on ACE permissions
 - Total player count and copyable server ID
+
+## Dependencies
+- [ox_lib](https://github.com/communityox/ox_lib)
 
 ## Documentation
 ➡️ [docs.acscripts.dev/scoreboard](https://docs.acscripts.dev/scoreboard) ⬅️
